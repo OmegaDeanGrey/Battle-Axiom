@@ -1,0 +1,41 @@
+import type { Ability } from "./ability"
+import type { SkillNode } from "./skillNode"
+import type { StatusEffect } from "./statusEffect"
+import type { Passive } from "./passive"
+
+export type UnitStatKey =
+  | "hp"
+  | "maxHp"
+  | "speed"
+  | "attack"
+  | "defense"
+
+export type Unit = {
+  id: string
+  name: string
+
+  team: "player" | "enemy"
+  
+  hp: number
+  maxHp: number
+
+  attack: number
+  defense: number
+
+  speed: number
+  timeline: number
+
+  level: number
+  xp: number
+  skillPoints: number
+
+  skillTree: SkillNode[]
+
+  abilities: Ability[]
+  statuses: StatusEffect[]
+  passives: Passive[]
+
+  isPlayer?: boolean
+
+  tags: string[]
+}

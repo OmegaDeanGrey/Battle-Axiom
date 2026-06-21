@@ -17,6 +17,9 @@ export function createGoblin(): Unit {
 
     attack: 15,
     defense: 15,
+    critChance: 0.10,
+    critMultiplier: 2,
+    damageVariance: 0.10,
     speed: 20,
 
     timeline: 0,

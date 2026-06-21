@@ -2,18 +2,18 @@ import type { Unit } from "../../models/unit"
 
 import { BasicAttack } from "../../abilities/basicAttack"
 
-export function createPriest(): Unit {
+export function createFairy(): Unit {
   return {
     id: crypto.randomUUID(),
-          name: "Priest",
-          hp: 90,
-          maxHp: 90,
-          attack: -10,
-          defense: 20,
+          name: "Fairy",
+          hp: 70,
+          maxHp: 70,
+          attack: 10,
+          defense: 25,
           critChance: 0.10,
           critMultiplier: 2,
           damageVariance: 0.15,
-          speed: 15,
+          speed: 25,
           timeline: 0,
           level: 1,
           xp: 0,
@@ -47,6 +47,6 @@ export function createPriest(): Unit {
           ],
           team: "player",
           statuses: [],
-          tags: ["Human", "Buff"]
+          tags: ["Nature", "Buff"]
         }
     }

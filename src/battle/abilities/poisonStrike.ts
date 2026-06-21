@@ -7,7 +7,8 @@ export const PoisonStrike: Ability = {
   effects: [
     {
       type: "damage",
-      amount: 10
+      amount: 10,
+      multiplier: 0.9
     },
     {
       type: "applyStatus",

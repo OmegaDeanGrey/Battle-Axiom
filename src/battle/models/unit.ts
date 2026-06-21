@@ -22,6 +22,10 @@ export type Unit = {
   attack: number
   defense: number
 
+  critChance: number
+  critMultiplier: number
+  damageVariance: number
+
   speed: number
   timeline: number
 
@@ -34,6 +38,8 @@ export type Unit = {
   abilities: Ability[]
   statuses: StatusEffect[]
   passives: Passive[]
+
+  portrait: string
 
   isPlayer?: boolean
 

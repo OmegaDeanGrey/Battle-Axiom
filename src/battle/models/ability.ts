@@ -3,7 +3,10 @@ import type { StatusEffect } from "./statusEffect"
 export type AbilityEffect =
   | {
       type: "damage"
+
       amount: number
+
+      multiplier?: number
     }
 
   | {

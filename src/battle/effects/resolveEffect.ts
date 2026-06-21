@@ -13,23 +13,56 @@ export function resolveEffect(
 
 case "damage": {
 
-  const attackBonus =
-    Math.floor(source.attack / 5)
+const attackBonus =
+  Math.floor(source.attack / 5)
 
-  const defenseReduction =
-    Math.floor(target.defense / 5)
+const defenseReduction =
+  Math.floor(target.defense / 5)
 
-  const damage = Math.max(
-    1,
+const multiplier =
+  effect.multiplier ?? 1
+
+const variance =
+  1 +
+  (
+    (Math.random() * 2 - 1)
+    *
+    source.damageVariance
+  )
+
+let damage =
+  (
     effect.amount +
-    attackBonus -
-    defenseReduction
+    source.attack +
+    attackBonus
+  )
+  *
+  multiplier
+  *
+  variance
+
+  const isCrit =
+    Math.random()
+    <
+    source.critChance
+
+  if (isCrit) {
+    damage *= source.critMultiplier
+  }
+
+  damage -= defenseReduction
+
+  damage = Math.max(
+    1,
+    Math.floor(damage)
   )
 
   target.hp -= damage
 
   state.log.push(
-    `${target.name} takes ${damage} damage`
+    isCrit
+      ? `${target.name} takes ${damage} CRITICAL damage!`
+      : `${target.name} takes ${damage} damage`
   )
 
   break

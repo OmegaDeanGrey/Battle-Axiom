@@ -1,5 +1,6 @@
 import type { Unit } from "../../models/unit"
-
+import knightPortrait
+from "../../../assets/heroes/Knight.png"
 import { PoisonStrike }
 from "../../abilities/poisonStrike"
 
@@ -14,6 +15,9 @@ export function createKnight(): Unit {
           maxHp: 120,
           attack: 25,
           defense: 25,
+          critChance: 0.10,
+          critMultiplier: 2,
+          damageVariance: 0.15,
           speed: 10,
           timeline: 0,
           level: 1,
@@ -48,6 +52,7 @@ export function createKnight(): Unit {
           ],
           team: "player",
           statuses: [],
-          tags: ["Human"]
+          portrait: knightPortrait,
+          tags: ["Human", "Melee"]
         }
     }

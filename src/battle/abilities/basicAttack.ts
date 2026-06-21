@@ -7,7 +7,8 @@ export const BasicAttack: Ability = {
   effects: [
     {
       type: "damage",
-      amount: 15
+      amount: 15,
+      multiplier: 1
     }
   ]
 }

@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import magePortrait
+from "../../../assets/heroes/Mage.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createMage(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Mage",
+          heroClass:"Mage",
           hp: 60,
           maxHp: 60,
           attack: 40,
@@ -47,6 +49,7 @@ export function createMage(): Unit {
           ],
           team: "player",
           statuses: [],
+          portrait: magePortrait,
           tags: ["Arcane", "Ranged"]
         }
     }

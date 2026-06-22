@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import priestPortrait
+from "../../../assets/heroes/Priest.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createPriest(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Priest",
+          heroClass:"Priest",
           hp: 90,
           maxHp: 90,
           attack: -10,
@@ -47,6 +49,7 @@ export function createPriest(): Unit {
           ],
           team: "player",
           statuses: [],
+          portrait: priestPortrait,
           tags: ["Human", "Buff"]
         }
     }

@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import witchPortrait
+from "../../../assets/heroes/Witch.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createWitch(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Witch",
+          heroClass:"Witch",
           hp: 70,
           maxHp: 70,
           attack: 15,
@@ -47,6 +49,7 @@ export function createWitch(): Unit {
           ],
           team: "player",
           statuses: [],
+            portrait: witchPortrait,
           tags: ["Arcane", "Buff"]
         }
     }

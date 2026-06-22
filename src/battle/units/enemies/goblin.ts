@@ -11,7 +11,7 @@ export function createGoblin(): Unit {
     id: crypto.randomUUID(),
 
     name: "Goblin",
-
+    heroClass: "Goblin",
     hp: 100,
     maxHp: 100,
 
@@ -37,6 +37,8 @@ export function createGoblin(): Unit {
     team: "enemy",
 
     statuses: [],
+
+    portrait: "goblinPortrait",
 
     tags: ["Goblin"]
   }

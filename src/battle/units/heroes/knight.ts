@@ -11,6 +11,7 @@ export function createKnight(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Knight",
+          heroClass:"Knight",
           hp: 120,
           maxHp: 120,
           attack: 25,

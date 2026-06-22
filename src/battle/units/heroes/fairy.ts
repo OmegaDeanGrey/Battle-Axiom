@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import fairyPortrait
+from "../../../assets/heroes/Fairy.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createFairy(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Fairy",
+          heroClass:"Fairy",
           hp: 70,
           maxHp: 70,
           attack: 10,
@@ -47,6 +49,7 @@ export function createFairy(): Unit {
           ],
           team: "player",
           statuses: [],
-          tags: ["Nature", "Buff"]
+          portrait: fairyPortrait,
+          tags: ["Nature", "Buff", "Flying"]
         }
     }

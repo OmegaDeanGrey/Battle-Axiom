@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import elvenRangerPortrait
+from "../../../assets/heroes/ElvenArcher.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createElvenRanger(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Elven Ranger",
+          heroClass:"Elven Ranger",
           hp: 70,
           maxHp: 70,
           attack: 15,
@@ -47,6 +49,7 @@ export function createElvenRanger(): Unit {
           ],
           team: "player",
           statuses: [],
+          portrait: elvenRangerPortrait,
           tags: ["Nature", "Ranged"]
         }
     }

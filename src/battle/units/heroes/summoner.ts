@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import summonerPortrait
+from "../../../assets/heroes/Summoner.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createSummoner(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Summoner",
+          heroClass:"Summoner",
           hp: 70,
           maxHp: 70,
           attack: 15,
@@ -47,6 +49,7 @@ export function createSummoner(): Unit {
           ],
           team: "player",
           statuses: [],
+          portrait: summonerPortrait,
           tags: ["Arcane", "Melee"]
         }
     }

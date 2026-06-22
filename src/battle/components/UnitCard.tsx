@@ -47,7 +47,9 @@ export default function UnitCard({
         {unit.name}
       </strong>
 
-
+        <div>
+        {unit.heroClass}
+      </div>
       <div>
         HP: {unit.hp}/{unit.maxHp}
       </div>

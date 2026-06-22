@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import roguePortrait
+from "../../../assets/heroes/Rogue.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createRogue(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Rogue",
+          heroClass:"Rogue",
           hp: 75,
           maxHp: 75,
           attack: 20,
@@ -47,6 +49,7 @@ export function createRogue(): Unit {
           ],
           team: "player",
           statuses: [],
+          portrait: roguePortrait,
           tags: ["Human", "Ranged"]
         }
     }

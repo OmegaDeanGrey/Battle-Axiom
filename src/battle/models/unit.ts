@@ -14,6 +14,8 @@ export type Unit = {
   id: string
   name: string
 
+  heroClass: string
+
   team: "player" | "enemy"
   
   hp: number

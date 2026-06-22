@@ -1,11 +1,13 @@
 import type { Unit } from "../../models/unit"
-
+import babyDragonPortrait
+from "../../../assets/heroes/BabyDragon.png"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createBabyDragon(): Unit {
   return {
     id: crypto.randomUUID(),
           name: "Baby Dragon",
+          heroClass:"Baby Dragon",
           hp: 130,
           maxHp: 130,
           attack: 30,
@@ -47,6 +49,7 @@ export function createBabyDragon(): Unit {
           ],
           team: "player",
           statuses: [],
+          portrait: babyDragonPortrait,
           tags: ["Nature", "Melee"]
         }
     }

@@ -1,6 +1,11 @@
 import { useState } from "react"
 import type { Unit } from "../../battle/models/unit"
-
+import HeroInfoPanel
+from "./HeroInfoPanel"
+import PartySynergyPanel
+from "./PartySynergyPanel"
+import HeroNamingModal
+from "./HeroNamingModal"
 import { HeroRoster } from "../roster/heroRoster"
 
 import "./PartySelection.css"
@@ -15,44 +20,22 @@ export default function PartySelection({
   onStartBattle
 }: Props) {
 
+  const [heroNameInput, setHeroNameInput] =
+  useState("")
+
+  const [pendingHero, setPendingHero] =
+  useState<Unit | null>(null)
+
+const [showNameModal, setShowNameModal] =
+  useState(false)
+
   const [selectedHeroes, setSelectedHeroes] =
     useState<Unit[]>([])
 
-  function toggleHero(
-    createHero: () => Unit
-  ) {
+  const [previewHero, setPreviewHero] =
+  useState<Unit | null>(null)
 
-    const preview = createHero()
-
-    // const alreadySelected =
-    //   selectedHeroes.some(
-    //     hero =>
-    //       hero.name === preview.name
-    //   )
-
-    // if (alreadySelected) {
-
-    //   setSelectedHeroes(
-    //     selectedHeroes.filter(
-    //       hero =>
-    //         hero.name !== preview.name
-    //     )
-    //   )
-
-    //   return
-    // }
-
-    if (selectedHeroes.length >= 3) {
-      return
-    }
-
-    setSelectedHeroes([
-      ...selectedHeroes,
-      preview
-    ])
-  }
-
-  function removeHero(
+function removeHero(
   heroId: string
 ) {
 
@@ -62,17 +45,26 @@ export default function PartySelection({
     )
   )
 
+
+  if (
+    previewHero?.id === heroId
+  ) {
+
+    setPreviewHero(null)
+
+  }
+
 }
 
   return (
 
     <div
-      style={{ padding: 20 }}
+      style={{ padding: 30 }}
       id="partyselectscreen"
     >
 
       <h1>
-        Choose Your Party
+        Choose 3 Heroes
       </h1>
 
       <h2>
@@ -88,11 +80,11 @@ export default function PartySelection({
               const preview =
                 createHero()
 
-              const selected =
-                selectedHeroes.some(
-                  hero =>
-                    hero.name === preview.name
-                )
+             const selectedCount =
+                  selectedHeroes.filter(
+                    hero =>
+                     hero.heroClass === preview.heroClass
+                  ).length
 
               return (
 
@@ -100,9 +92,13 @@ export default function PartySelection({
 
                   key={preview.name}
 
-                  onClick={() =>
-                    toggleHero(createHero)
-                  }
+            onClick={() => {
+
+              const hero = createHero()
+
+              setPreviewHero(hero)
+
+}}
 
                   className="partybuttons"
 
@@ -120,11 +116,14 @@ export default function PartySelection({
                     backgroundRepeat:
                       "no-repeat",
 
-                    border:
-                      selected
-                        ? "4px solid blue"
-                        : "2px solid darkblue"
-
+                 border:
+  selectedCount === 3
+    ? "8px solid gold"
+    : selectedCount === 2
+      ? "6px solid yellow"
+      : selectedCount === 1
+        ? "4px solid white"
+        : "2px solid darkblue"
                   }}
 
                 >
@@ -148,7 +147,7 @@ export default function PartySelection({
       <h2>
         Selected Party
       </h2>
-
+<div id="selectedheroes">
 {
   selectedHeroes.map(
     hero => (
@@ -160,26 +159,41 @@ export default function PartySelection({
         onClick={() =>
           removeHero(hero.id)
         }
+       className="partybuttons"
+       style={{
+                
+                    backgroundImage:
+                      `url(${hero.portrait})`,
 
-        style={{
-          cursor: "pointer",
-          marginBottom: 5
-        }}
+                    backgroundSize:
+                      "cover",
+
+                    backgroundPosition:
+                      "center",
+
+                    backgroundRepeat:
+                      "no-repeat",
+
+                    border:
+                        "2px solid darkblue",
+                    
+                    color: "white",
+
+                    justifyContent: "center"
+
+                  }}
+
 
       >
 
         {hero.name}
-
-        {" - "}
-
-        {hero.tags.join(", ")}
 
       </div>
 
     )
   )
 }
-
+</div>
       <button
 
         disabled={
@@ -191,10 +205,19 @@ export default function PartySelection({
             selectedHeroes
           )
         }
+        className="buttons"
 
         style={{
+          fontSize: "40px",
           marginTop: 20,
-          padding: 12
+          padding: 22,
+          borderRadius: 20,
+          marginLeft: "auto",
+          marginRight: "auto",
+          color:
+          selectedHeroes.length === 3
+        ? "yellow"
+        : "white"
         }}
 
       >
@@ -202,8 +225,106 @@ export default function PartySelection({
         Start Battle
 
       </button>
+<HeroInfoPanel
 
+  hero={previewHero}
+
+  partyFull={
+    selectedHeroes.length >= 3
+  }
+
+  onAddToParty={() => {
+
+    if (!previewHero) {
+      return
+    }
+
+    if (
+      selectedHeroes.length >= 3
+    ) {
+      return
+    }
+
+    setPendingHero(
+      previewHero
+    )
+
+    setHeroNameInput(
+      previewHero.heroClass
+    )
+
+    setShowNameModal(true)
+
+  }}
+
+/>
+<PartySynergyPanel
+  party={selectedHeroes}
+/>
+
+{
+  showNameModal &&
+  pendingHero && (
+
+    <HeroNamingModal
+      
+      heroClass={
+        pendingHero.heroClass
+      }
+
+      heroNameInput={
+        heroNameInput
+      }
+
+      onNameChange={
+        setHeroNameInput
+      }
+
+      onConfirm={() => {
+
+  if (!pendingHero) {
+    return
+  }
+
+  const namedHero = {
+
+    ...pendingHero,
+
+    name:
+      heroNameInput.trim() ||
+      pendingHero.heroClass
+
+  }
+
+ setSelectedHeroes([
+  ...selectedHeroes,
+  {
+    ...namedHero,
+    id: crypto.randomUUID()
+  }
+])
+
+  setShowNameModal(false)
+
+  setPendingHero(null)
+
+  setHeroNameInput("")
+
+}}
+
+      onCancel={() => {
+
+        setShowNameModal(false)
+
+        setPendingHero(null)
+
+      }}
+
+    />
+  )
+}
     </div>
+
 
   )
 }

@@ -49,6 +49,7 @@ export function createMage(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A student of the arcane who seeks to understand and command the forces beyond the ordinary world. Every Mage follows a unique path of magical discovery, with countless possibilities waiting to be unlocked.",
           portrait: magePortrait,
           tags: ["Arcane", "Ranged"]
         }

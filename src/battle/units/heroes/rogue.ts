@@ -49,6 +49,7 @@ export function createRogue(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A clever and adaptable fighter who relies on speed, precision, and opportunity. Rogues learn to exploit weaknesses and can develop into masters of stealth, deception, or deadly combat techniques.",
           portrait: roguePortrait,
           tags: ["Human", "Ranged"]
         }

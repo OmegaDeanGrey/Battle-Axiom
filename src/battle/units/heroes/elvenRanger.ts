@@ -49,6 +49,7 @@ export function createElvenRanger(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A master of the wilds who combines unmatched precision with a deep connection to nature. Elven Rangers strike enemies from afar while adapting to the flow of battle.",
           portrait: elvenRangerPortrait,
           tags: ["Nature", "Ranged"]
         }

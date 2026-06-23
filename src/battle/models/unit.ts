@@ -41,6 +41,8 @@ export type Unit = {
   statuses: StatusEffect[]
   passives: Passive[]
 
+   description: string
+
   portrait: string
 
   isPlayer?: boolean

@@ -1,5 +1,10 @@
 import type { Unit } from "../../battle/models/unit"
 
+import {
+  getTagEffects
+}
+from "../../battle/tagEffects/getTagEffects"
+
 
 type Props = {
   hero: Unit | null
@@ -21,6 +26,8 @@ export default function HeroInfoPanel({
     return null
   }
 
+  const tagEffects =
+  getTagEffects(hero)
 
   return (
 
@@ -31,15 +38,20 @@ export default function HeroInfoPanel({
       </h2>
 
 
-      <img
+      {/* <img
 
         src={hero.portrait}
-        width={160}
-        height={170}
+        width={60}
+        height={70}
         id="heroportrait"
-      />
-    <div>
+      /> */}
+    {/* <div>
         Class: {hero.heroClass}
+    </div> */}
+    <div className="hero-description">
+
+  {hero.description}
+
     </div>
      <div>
         HP: {hero.hp}
@@ -56,6 +68,42 @@ export default function HeroInfoPanel({
         Tags:
         {" "}
         {hero.tags.join(", ")}
+      <h3>
+  Traits
+</h3>
+
+
+{
+  tagEffects.length === 0 && (
+
+    <p>
+      No special traits
+    </p>
+
+  )
+}
+
+
+
+{
+  tagEffects.map(effect => (
+
+    <div
+      key={effect.tag}
+    >
+
+      <strong>
+        {effect.name}
+      </strong>
+
+      <p>
+        {effect.description}
+      </p>
+
+    </div>
+
+  ))
+}
 
 {
   !partyFull && (

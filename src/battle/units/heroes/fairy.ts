@@ -49,6 +49,7 @@ export function createFairy(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A magical being connected to the forces of nature and restoration. Fairies combine healing, growth, and mystical power, with their evolution shaped by the balance between nurturing life and wielding magic.",
           portrait: fairyPortrait,
           tags: ["Nature", "Buff", "Flying"]
         }

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import type { Unit } from "../../battle/models/unit"
 import HeroInfoPanel
 from "./HeroInfoPanel"
@@ -19,11 +20,14 @@ type Props = {
 export default function PartySelection({
   onStartBattle
 }: Props) {
-
+  const navigate = useNavigate()
   const [heroNameInput, setHeroNameInput] =
   useState("")
 
   const [pendingHero, setPendingHero] =
+  useState<Unit | null>(null)
+
+  const [heroToRemove, setHeroToRemove] =
   useState<Unit | null>(null)
 
 const [showNameModal, setShowNameModal] =
@@ -156,9 +160,10 @@ function removeHero(
 
         key={hero.id}
 
-        onClick={() =>
-          removeHero(hero.id)
-        }
+            onClick={() =>
+      setHeroToRemove(hero)
+    }
+
        className="partybuttons"
        style={{
                 
@@ -200,11 +205,15 @@ function removeHero(
           selectedHeroes.length !== 3
         }
 
-        onClick={() =>
-          onStartBattle(
-            selectedHeroes
-          )
-        }
+        onClick={() => {
+
+  onStartBattle(
+    selectedHeroes
+  )
+
+  navigate("/battle")
+
+}}
         className="buttons"
 
         style={{
@@ -321,6 +330,46 @@ function removeHero(
       }}
 
     />
+  )
+}
+
+{
+  heroToRemove && (
+
+    <div className="modal-overlay">
+
+      <div className="hero-naming-modal">
+
+        <h2>
+          Remove {heroToRemove.name}?
+        </h2>
+
+        <button
+          onClick={() => {
+
+            removeHero(
+              heroToRemove.id
+            )
+
+            setHeroToRemove(null)
+
+          }}
+        >
+          Remove
+        </button>
+
+        <button
+          onClick={() =>
+            setHeroToRemove(null)
+          }
+        >
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
   )
 }
     </div>

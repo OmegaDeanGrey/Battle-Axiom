@@ -49,6 +49,7 @@ export function createPriest(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A guardian of sacred power who protects allies through healing, restoration, and divine energy. Priests follow paths shaped by how they choose to serve and influence the world around them.",
           portrait: priestPortrait,
           tags: ["Human", "Buff"]
         }

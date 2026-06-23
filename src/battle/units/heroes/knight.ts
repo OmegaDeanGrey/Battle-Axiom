@@ -53,6 +53,8 @@ export function createKnight(): Unit {
           ],
           team: "player",
           statuses: [],
+          description:
+            "A disciplined warrior trained in defense, leadership, and battlefield control. Knights form the foundation of many great heroes, with paths that can lead toward greater protection, power, or mastery of combat.",
           portrait: knightPortrait,
           tags: ["Human", "Melee"]
         }

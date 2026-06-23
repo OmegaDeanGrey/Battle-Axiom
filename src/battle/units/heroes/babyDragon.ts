@@ -49,6 +49,7 @@ export function createBabyDragon(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A young creature born with immense potential and an ancient power waiting to awaken. Baby Dragons grow through experience, eventually discovering what kind of legendary being they are destined to become.",
           portrait: babyDragonPortrait,
           tags: ["Nature", "Melee"]
         }

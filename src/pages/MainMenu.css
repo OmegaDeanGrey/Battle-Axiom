@@ -1,0 +1,39 @@
+#mainmenu {
+    background-image: url("../assets/BattleAxiomBG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 93vh;
+    padding: 30px;
+display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#MMTitle {
+    color: aliceblue;
+    text-shadow: 5px 2px black;
+    font-size: 160px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#MMButton {
+    border-radius: 15px;
+    width: 220px;
+    height: 90px;
+    color:aliceblue;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px rgb(3, 3, 3);
+    background-color: rgba(0, 0, 0, 0.494);
+    box-shadow: 4px 4px 14px black;
+    transition: transform 300ms;
+    margin-left: 400px;
+    margin-top: -690px;
+  
+}
+
+#MMButton:hover {
+    transform: scale(1.12);
+    color: yellow;
+}

@@ -49,7 +49,8 @@ export function createWitch(): Unit {
           ],
           team: "player",
           statuses: [],
-            portrait: witchPortrait,
+          description: "A practitioner of mysterious and unconventional magic who explores powers others fear to understand. Witches grow through knowledge of curses, spirits, and hidden forces, shaping their own approach to magic.",
+          portrait: witchPortrait,
           tags: ["Arcane", "Buff"]
         }
     }

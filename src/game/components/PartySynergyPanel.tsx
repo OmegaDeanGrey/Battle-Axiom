@@ -4,6 +4,14 @@ import {
   RelationshipRegistry
 }
 from "../../battle/relationships/relationshipRegistry"
+import {
+ getActiveSynergies
+}
+from "../../battle/synergy/getActiveSynergies"
+import {
+  getTagEffects
+}
+from "../../battle/tagEffects/getTagEffects"
 
 
 type Props = {
@@ -19,6 +27,14 @@ export default function PartySynergyPanel({
   if (party.length < 2) {
     return null
   }
+
+  const activeSynergies =
+  getActiveSynergies(party)
+
+  const partyEffects =
+  party.flatMap(hero =>
+    getTagEffects(hero)
+  )
 
   const partyClasses =
   party.map(
@@ -64,10 +80,86 @@ export default function PartySynergyPanel({
 
     <div className="party-synergy-panel">
 
-      <h2>
-        Party Synergies
-      </h2>
-<h3>
+     <h2>
+  Active Synergies
+</h2>
+
+
+{
+ activeSynergies.length === 0 && (
+
+   <p>
+     No active synergies
+   </p>
+
+ )
+}
+
+
+
+{
+ activeSynergies.map(
+  synergy => (
+
+    <div
+      key={synergy.id}
+    >
+
+      <h3>
+        {synergy.name}
+      </h3>
+
+
+      <p>
+        {synergy.description}
+      </p>
+
+
+    </div>
+
+  )
+ )
+}
+{/* 
+<h2>
+  Party Traits
+</h2>
+
+
+{
+  partyEffects.length === 0 && (
+
+    <p>
+      No special traits
+    </p>
+
+  )
+}
+
+
+
+{
+ partyEffects.map(effect => (
+
+  <div
+    key={effect.tag}
+  >
+
+    <h3>
+      {effect.name}
+    </h3>
+
+
+    <p>
+      {effect.description}
+    </p>
+
+
+  </div>
+
+ ))
+} */}
+{/* <h3>
   Combo Attacks
 </h3>
 
@@ -87,7 +179,7 @@ export default function PartySynergyPanel({
 
     )
   )
-}
+} */}
 
 <h3>
   Relationships

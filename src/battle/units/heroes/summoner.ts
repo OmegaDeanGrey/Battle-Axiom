@@ -49,6 +49,7 @@ export function createSummoner(): Unit {
           ],
           team: "player",
           statuses: [],
+          description: "A wielder of ancient knowledge who calls upon creatures and forces beyond themselves. Summoners grow by discovering new entities to command and new ways to shape the battlefield.",
           portrait: summonerPortrait,
           tags: ["Arcane", "Melee"]
         }

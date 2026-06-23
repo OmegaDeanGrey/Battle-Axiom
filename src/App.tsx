@@ -1,8 +1,14 @@
 import { useState } from "react"
 
-import PartySelection from "./game/components/PartySelection"
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom"
 
-import { useBattle } from "./battle/hooks/useBattle"
+import MainMenu from "./pages/MainMenu"
+
+import PartySelection from "./game/components/PartySelection"
 
 import { createGoblin } from "./battle/units/enemies/goblin"
 
@@ -17,32 +23,67 @@ export default function App() {
     useState<Unit[] | null>(null)
 
 
-  if (!party) {
-
-    return (
-
-      <PartySelection
-
-        onStartBattle={(selectedParty) => {
-
-          setParty(selectedParty)
-
-        }}
-
-      />
-
-    )
-
-  }
-
-
   return (
 
-    <BattleScreen
+    <BrowserRouter>
 
-      party={party}
+      <Routes>
 
-    />
+
+        <Route
+
+          path="/"
+
+          element={
+            <MainMenu />
+          }
+
+        />
+
+
+        <Route
+
+          path="/party"
+
+          element={
+
+            <PartySelection
+
+              onStartBattle={(selectedParty) => {
+
+                setParty(selectedParty)
+
+              }}
+
+            />
+
+          }
+
+        />
+
+
+        <Route
+
+          path="/battle"
+
+          element={
+
+            party && (
+
+              <BattleScreen
+                party={party}
+              />
+
+            )
+
+          }
+
+        />
+
+
+      </Routes>
+
+    </BrowserRouter>
 
   )
 

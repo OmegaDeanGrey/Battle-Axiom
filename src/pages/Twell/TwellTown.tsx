@@ -1,8 +1,12 @@
 import { useState, useRef } from "react"
-
+import { useNavigate } from "react-router-dom"
 import { useGame } from "../../game/context/GameContext"
 
+import DialogueBox
+from "../../game/components/DialogueBox"
+
 import "./Twell.css"
+
 
 type Location =
   | "weaponShop"
@@ -14,382 +18,835 @@ type Location =
   | null
 
 
+
 export default function TwellTown() {
 
 
-    const audioRef =
-      useRef<HTMLAudioElement>(null)
-  
-    const [playing, setPlaying] =
-      useState(false)
-  
-  
-    function toggleAudio() {
-  
-      const audio =
-        audioRef.current
-  
-      if (!audio) {
-        return
-      }
-  
-  
-      if (audio.paused) {
-  
-        audio.play()
-  
-        setPlaying(true)
-  
-      } else {
-  
-        audio.pause()
-  
-        setPlaying(false)
-  
-      }
-  
-    }
-  const [activeLocation, setActiveLocation] =
-    useState<Location>(null)
+const navigate = useNavigate()
 
 
-  const locationData = {
 
-    weaponShop: {
-      title: "Weapon Shop",
-      background: "/WeaponShopInterior.png"
-    },
+const [
+  gateDialogueIndex,
+  setGateDialogueIndex
+] = useState(0)
 
-    itemShop: {
-      title: "Item Shop",
-      background: "/ItemShopInterior.png"
-    },
 
-    windmillRow: {
-      title: "Windmill Row",
-      background: "/WindmillRow.png"
-    },
 
-    questBoard: {
-      title: "Quest Board",
-      background: "/QuestBoard.png"
-    },
+const [
+  homesteadDialogueIndex,
+  setHomesteadDialogueIndex
+] = useState(-1)
 
-    mayor: {
-      title: "Mayor's Office",
-      background: "/MayorOffice.png"
-    },
 
-    homestead: {
-      title: "Homestead",
-      background: "/Homestead.png"
-    }
+
+const gateGuardDialogue = [
+
+  {
+    speaker: "Gate Guard",
+
+    portrait:
+      "/portraits/GateGuard.png",
+
+    text:
+      "Halt!... Ah, it's you. Welcome back to Twell."
+
+  },
+
+  {
+    speaker: "Gate Guard",
+
+    portrait:
+      "/portraits/GateGuard.png",
+
+    text:
+      "Strange rumors have been spreading beyond the fields."
+
+  },
+
+  {
+    speaker: "Gate Guard",
+
+    portrait:
+      "/portraits/GateGuard.png",
+
+    text:
+      "Your family will want to see you first."
+
+  },
+
+  {
+    speaker: "Gate Guard",
+
+    portrait:
+      "/portraits/GateGuard.png",
+
+    text:
+      "Head to your homestead. The mayor can wait."
 
   }
+
+]
+
+
+
+const homesteadDialogue = [
+
+  {
+    speaker: "Grandmother",
+
+    portrait:
+      "/portraits/Grandmother.png",
+
+    text:
+      "Welcome home, travelers."
+
+  },
+
+  {
+    speaker: "Grandmother",
+
+    portrait:
+      "/portraits/Grandmother.png",
+
+    text:
+      "Twell has been peaceful for many years."
+
+  },
+
+  {
+    speaker: "Grandmother",
+
+    portrait:
+      "/portraits/Grandmother.png",
+
+    text:
+      "But strange events have begun to trouble the outskirts."
+
+  },
+
+  {
+    speaker: "Grandmother",
+
+    portrait:
+      "/portraits/Grandmother.png",
+
+    text:
+      "The mayor wishes to meet your fellowship."
+
+  }
+
+]
+
+
+
+const audioRef =
+  useRef<HTMLAudioElement>(null)
+
+
+
+const [playing, setPlaying] =
+  useState(false)
+
+
+
+function toggleAudio() {
+
+  const audio =
+    audioRef.current
+
+
+  if (!audio) {
+    return
+  }
+
+
+  if(audio.paused) {
+
+    audio.play()
+
+    setPlaying(true)
+
+  }
+
+  else {
+
+    audio.pause()
+
+    setPlaying(false)
+
+  }
+
+}
+
+
+
+const [activeLocation, setActiveLocation] =
+useState<Location>(null)
+
+
+
+const locationData = {
+
+
+weaponShop: {
+
+title: "Weapon Shop",
+
+background:
+"/WeaponShopInterior.png"
+
+},
+
+
+itemShop: {
+
+title: "Item Shop",
+
+background:
+"/ItemShopInterior.png"
+
+},
+
+
+windmillRow: {
+
+title: "Windmill Row",
+
+background:
+"/WindmillRow.png"
+
+},
+
+
+questBoard: {
+
+title: "Quest Board",
+
+background:
+"/QuestBoard.png"
+
+},
+
+
+mayor: {
+
+title: "Mayor's Office",
+
+background:
+"/MayorOffice.png"
+
+},
+
+
+homestead: {
+
+title: "Homestead",
+
+background:
+"/Homestead.png"
+
+}
+
+
+}
+
+
+
 const {
 
-  itemShopUnlocked,
+itemShopUnlocked,
 
-  mayorUnlocked,
+mayorUnlocked,
 
-  setItemShopUnlocked,
+questBoardUnlocked,
 
-  setMayorUnlocked,
+setItemShopUnlocked,
 
-  questBoardUnlocked,
+setMayorUnlocked
+
 
 } = useGame()
 
-  return (
 
-    <div id="Twell">
 
-        <audio
-        ref={audioRef}
-        loop
-        autoPlay
-   
-      >
 
-        <source
-          src="/Roukus.mp3"
-          type="audio/mpeg"
-        />
 
-        Your browser does not support audio.
+return (
 
-      </audio>
- 
+<div id="Twell">
+
+
+<audio
+
+ref={audioRef}
+
+loop
+
+autoPlay
+
+>
+
+<source
+
+src="/Roukus.mp3"
+
+type="audio/mpeg"
+
+/>
+
+</audio>
+
+
+
+
+
 {
-  questBoardUnlocked && (
+questBoardUnlocked && (
 
-    <button
-      className="twell-button"
-      id="windmill-row"
-      onClick={() =>
-        setActiveLocation(
-          "windmillRow"
-        )
-      }
-    >
-      Windmill Row
-    </button>
+<button
 
-  )
+className="twell-button"
+
+id="windmill-row"
+
+onClick={() =>
+setActiveLocation(
+"windmillRow"
+)
 }
-      {
-  mayorUnlocked && (
-            <button
-        className="twell-button"
-        id="mayor"
-        onClick={() =>
-          setActiveLocation(
-            "mayor"
-          )
-       
-        }
-      >
-        Mayor
-      </button>
-      
-      )
-       }
-{
-  mayorUnlocked && (
 
-    <button
-      className="twell-button"
-      id="quest-board"
-      onClick={() =>
-        setActiveLocation(
-          "questBoard"
-        )
-      }
-    >
-      Quest Board
-    </button>
+>
 
-  )
+Windmill Row
+
+</button>
+
+)
 }
-      <button
-        className="twell-button"
-        id="homestead"
-        onClick={() =>
-          setActiveLocation(
-            "homestead"
-          )
-        }
-      >
-        Homestead
-      </button>
-      {
-  itemShopUnlocked && (
 
-            <button
-        className="twell-button"
-        id="item-shop"
-        onClick={() =>
-          setActiveLocation(
-            "itemShop"
-          )
-        }
-      >
-        Item Shop
-      </button>
-  )}
+
+
 
 {
-  mayorUnlocked && (
+mayorUnlocked && (
 
-           <button
-        className="twell-button"
-        id="weapon-shop"
-        onClick={() =>
-          setActiveLocation(
-            "weaponShop"
-          )
-        }
-      >
-        Weapon Shop
-      </button>
-  )}
-      {
+<button
 
-        activeLocation && (
+className="twell-button"
 
-          <div
-            className="modal-overlay"
-          >
+id="mayor"
 
-            <div
+onClick={() =>
+setActiveLocation(
+"mayor"
+)
+}
 
-              className="town-modal"
+>
 
-              style={{
+Mayor
 
-                backgroundImage:
+</button>
 
-                  `url(${
-                    locationData[
-                      activeLocation
-                    ].background
-                  })`
+)
+}
 
-              }}
 
-            >
 
-              <button
 
-                className="close-button"
+{
+mayorUnlocked && (
 
-                onClick={() =>
-                  setActiveLocation(
-                    null
-                  )
-                }
+<button
 
-              >
+className="twell-button"
 
-                X
+id="quest-board"
 
-              </button>
+onClick={() =>
+setActiveLocation(
+"questBoard"
+)
+}
 
-              <h1>
+>
 
-                {
-                  locationData[
-                    activeLocation
-                  ].title
-                }
+Quest Board
 
-              </h1>
+</button>
 
+)
+}
 
-              {
 
-                activeLocation ===
-                "weaponShop" && (
 
-                  <div>
 
-                    Weapon inventory goes here
+<button
 
-                  </div>
+className="twell-button"
 
-                )
+id="homestead"
 
-              }
+onClick={() =>
+setActiveLocation(
+"homestead"
+)
+}
 
+>
 
-              {
+Homestead
 
-                activeLocation ===
-                "itemShop" && (
+</button>
 
-                  <div>
 
-                    Consumables go here
 
-                  </div>
 
-                )
 
-              }
 
+{
+itemShopUnlocked && (
 
-              {
+<button
 
-                activeLocation ===
-                "windmillRow" && (
+className="twell-button"
 
-                  <div>
+id="item-shop"
 
-                    Town residents go here
+onClick={() =>
+setActiveLocation(
+"itemShop"
+)
+}
 
-                  </div>
+>
 
-                )
+Item Shop
 
-              }
+</button>
 
+)
 
-              {
+}
 
-                activeLocation ===
-                "questBoard" && (
 
-                  <div>
 
-                    Available quests go here
 
-                  </div>
+{
+mayorUnlocked && (
 
-                )
+<button
 
-              }
+className="twell-button"
 
+id="weapon-shop"
 
-              {
+onClick={() =>
+setActiveLocation(
+"weaponShop"
+)
+}
 
-                activeLocation ===
-                "mayor" && (
+>
 
-                  <div>
+Weapon Shop
 
-                    Story dialogue goes here
+</button>
 
-                  </div>
+)
 
-                )
+}
 
-              }
 
 
-              {
 
-                activeLocation ===
-                "homestead" && (
+<button
 
-                  <div>
+className="twell-button"
 
-                       <p>
-      Your family welcomes you home.
-    </p>
+id="exittwellbutton"
 
+onClick={() =>
+navigate(-1)
+}
 
-    <button
+>
 
-      onClick={() => {
+Exit Town
 
-        setItemShopUnlocked(true)
+</button>
 
-        setMayorUnlocked(true)
 
-      }}
 
-    >
 
-      Continue Story
 
-    </button>
 
-                  </div>
 
-                )
+{
 
-              }
+activeLocation && (
 
-            </div>
+<div className="modal-overlay">
 
-          </div>
 
-        )
+<div
 
-      }
+className="town-modal"
 
-    </div>
+style={{
 
-  )
+backgroundImage:
+
+`url(${
+locationData[
+activeLocation
+].background
+})`
+
+}}
+
+>
+
+
+
+<button
+
+className="close-button"
+
+onClick={() =>
+setActiveLocation(null)
+}
+
+>
+
+X
+
+</button>
+
+
+
+<h1>
+
+{
+locationData[
+activeLocation
+].title
+}
+
+</h1>
+
+
+
+
+
+
+{
+
+activeLocation === "homestead" && (
+
+<div>
+
+<button
+
+onClick={() =>
+setHomesteadDialogueIndex(0)
+}
+
+>
+
+Speak With Grandmother
+
+</button>
+
+
+</div>
+
+)
+
+}
+
+
+
+
+{
+
+activeLocation === "weaponShop" && (
+
+<div>
+
+Weapon inventory goes here
+
+</div>
+
+)
+
+}
+
+
+
+
+{
+
+activeLocation === "itemShop" && (
+
+<div>
+
+Consumables go here
+
+</div>
+
+)
+
+}
+
+
+
+
+{
+
+activeLocation === "windmillRow" && (
+
+<div>
+
+Town residents go here
+
+</div>
+
+)
+
+}
+
+
+
+
+{
+
+activeLocation === "questBoard" && (
+
+<div>
+
+Available quests go here
+
+</div>
+
+)
+
+}
+
+
+
+
+{
+
+activeLocation === "mayor" && (
+
+<div>
+
+Story dialogue goes here
+
+</div>
+
+)
+
+}
+
+
+
+
+</div>
+
+</div>
+
+)
+
+}
+
+
+
+
+
+{
+
+gateDialogueIndex <
+
+gateGuardDialogue.length && (
+
+
+<DialogueBox
+
+
+speaker={
+
+gateGuardDialogue[
+
+gateDialogueIndex
+
+].speaker
+
+}
+
+
+
+portrait={
+
+gateGuardDialogue[
+
+gateDialogueIndex
+
+].portrait
+
+}
+
+
+
+text={
+
+gateGuardDialogue[
+
+gateDialogueIndex
+
+].text
+
+}
+
+
+
+onContinue={() => {
+
+
+const next =
+gateDialogueIndex + 1
+
+
+
+if(
+next >= gateGuardDialogue.length
+){
+
+setGateDialogueIndex(
+gateGuardDialogue.length
+)
+
+}
+
+else {
+
+setGateDialogueIndex(next)
+
+}
+
+
+}}
+
+
+/>
+
+)
+
+}
+
+
+
+
+
+{
+
+homesteadDialogueIndex >= 0 &&
+
+homesteadDialogueIndex <
+
+homesteadDialogue.length && (
+
+
+<DialogueBox
+
+
+speaker={
+
+homesteadDialogue[
+
+homesteadDialogueIndex
+
+].speaker
+
+}
+
+
+
+portrait={
+
+homesteadDialogue[
+
+homesteadDialogueIndex
+
+].portrait
+
+}
+
+
+
+text={
+
+homesteadDialogue[
+
+homesteadDialogueIndex
+
+].text
+
+}
+
+
+
+onContinue={() => {
+
+
+const next =
+homesteadDialogueIndex + 1
+
+
+
+if(
+
+next >= homesteadDialogue.length
+
+){
+
+
+setMayorUnlocked(true)
+
+setItemShopUnlocked(true)
+
+setHomesteadDialogueIndex(-1)
+
+
+}
+
+else {
+
+
+setHomesteadDialogueIndex(next)
+
+
+}
+
+
+
+}}
+
+
+/>
+
+)
+
+}
+
+
+
+</div>
+
+
+)
+
 
 }

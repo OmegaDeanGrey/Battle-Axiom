@@ -1,0 +1,83 @@
+.dialogue-box {
+
+    display: flex;
+
+    gap: 20px;
+
+    position: fixed;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 80%;
+
+    min-height: 180px;
+
+    background: rgba(15,15,25,.95);
+
+    border: 3px solid gold;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    color: white;
+
+    z-index: 9999;
+
+}
+
+.dialogue-portrait {
+
+    width: 180px;
+
+    height: 180px;
+
+    flex-shrink: 0;
+
+    border: 2px solid gold;
+
+    overflow: hidden;
+
+}
+
+.dialogue-content {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.dialogue-speaker {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: gold;
+
+    margin-bottom: 12px;
+
+}
+
+.dialogue-text {
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    min-height: 80px;
+
+}
+
+.dialogue-button {
+
+    margin-top: 15px;
+
+}

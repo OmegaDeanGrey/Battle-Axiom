@@ -64,3 +64,51 @@
     bottom: 420px;
     right: 300px;
 }
+
+.npc-marker {
+
+    position: absolute;
+
+    font-size: 34px;
+
+    color: rgba(250, 110, 236, 0.712);
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    animation: floatArrow 2s ease-in-out infinite;
+
+}
+
+@keyframes floatArrow {
+
+    0% {
+
+        transform: translateY(0px);
+
+    }
+
+    50% {
+
+        transform: translateY(-6px);
+
+    }
+
+    100% {
+
+        transform: translateY(0px);
+
+    }
+
+}
+
+#villager1 {
+
+    left: 733px;
+
+    bottom: 270px;
+
+}

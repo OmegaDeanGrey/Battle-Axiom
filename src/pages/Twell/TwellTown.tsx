@@ -38,7 +38,10 @@ const [
   setHomesteadDialogueIndex
 ] = useState(-1)
 
-
+const [
+  villagerDialogueIndex,
+  setVillagerDialogueIndex
+] = useState(-1)
 
 const gateGuardDialogue = [
 
@@ -138,6 +141,36 @@ const homesteadDialogue = [
 
 ]
 
+const villagerDialogue = [
+
+  {
+    speaker: "Villager",
+
+    portrait: "/portraits/Villager1.png",
+
+    text:
+      "Have you heard? Strange lights have been seen beyond the windmills."
+  },
+
+  {
+    speaker: "Villager",
+
+    portrait: "/portraits/Villager1.png",
+
+    text:
+      "Some say they're spirits. Others think they're soldiers."
+  },
+
+  {
+    speaker: "Villager",
+
+    portrait: "/portraits/Villager1.png",
+
+    text:
+      "Whatever they are... I don't think they're here by accident."
+  }
+
+]
 
 
 const audioRef =
@@ -431,7 +464,17 @@ Item Shop
 }
 
 
+<button
+  id="villager1"
+  className="npc-marker"
+  onClick={() => {
+    setVillagerDialogueIndex(0)
+  }}
+>
 
+▼
+
+</button>
 
 {
 mayorUnlocked && (
@@ -840,7 +883,53 @@ setHomesteadDialogueIndex(next)
 )
 
 }
+{
+  villagerDialogueIndex >= 0 &&
+  villagerDialogueIndex < villagerDialogue.length && (
 
+    <DialogueBox
+
+      speaker={
+        villagerDialogue[
+          villagerDialogueIndex
+        ].speaker
+      }
+
+      portrait={
+        villagerDialogue[
+          villagerDialogueIndex
+        ].portrait
+      }
+
+      text={
+        villagerDialogue[
+          villagerDialogueIndex
+        ].text
+      }
+
+      onContinue={() => {
+
+        const next =
+          villagerDialogueIndex + 1
+
+        if (
+          next >= villagerDialogue.length
+        ) {
+
+          setVillagerDialogueIndex(-1)
+
+        } else {
+
+          setVillagerDialogueIndex(next)
+
+        }
+
+      }}
+
+    />
+
+  )
+}
 
 
 </div>

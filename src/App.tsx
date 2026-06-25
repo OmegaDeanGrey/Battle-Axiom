@@ -1,4 +1,7 @@
-import { useState } from "react"
+import {
+  useGame
+}
+from "./game/context/GameContext"
 
 import {
   BrowserRouter,
@@ -10,17 +13,27 @@ import MainMenu from "./pages/MainMenu"
 
 import PartySelection from "./game/components/PartySelection"
 
-import { createGoblin } from "./battle/units/enemies/goblin"
+import {
+  createGoblin
+}
+from "./battle/units/enemies/goblin"
 
 import BattleView from "./battle/components/BattleView"
 
-import type { Unit } from "./battle/models/unit"
+import type { Unit }
+from "./battle/models/unit"
+
+import WorldMap from "./pages/WorldMap"
+import TwellTown from "./pages/Twell/TwellTown"
 
 
 export default function App() {
 
-  const [party, setParty] =
-    useState<Unit[] | null>(null)
+
+  const {
+    party
+  } = useGame()
+
 
 
   return (
@@ -31,44 +44,40 @@ export default function App() {
 
 
         <Route
-
           path="/"
-
           element={
             <MainMenu />
           }
-
         />
 
 
         <Route
-
           path="/party"
-
           element={
-
-            <PartySelection
-
-              onStartBattle={(selectedParty) => {
-
-                setParty(selectedParty)
-
-              }}
-
-            />
-
+            <PartySelection />
           }
-
         />
 
 
         <Route
+          path="/world"
+          element={
+            <WorldMap />
+          }
+        />
 
+                <Route
+          path="/twell"
+          element={
+            <TwellTown />
+          }
+        />
+
+        <Route
           path="/battle"
-
           element={
 
-            party && (
+            party.length > 0 && (
 
               <BattleScreen
                 party={party}
@@ -77,7 +86,6 @@ export default function App() {
             )
 
           }
-
         />
 
 
@@ -90,22 +98,21 @@ export default function App() {
 }
 
 
+
 function BattleScreen({
   party
 }: {
   party: Unit[]
 }) {
 
-  console.log("PARTY RECEIVED:", party)
-
 
   const units = [
+
     ...party,
+
     createGoblin()
+
   ]
-
-
-  console.log("UNITS SENT TO BATTLE:", units)
 
 
   return (
@@ -115,6 +122,5 @@ function BattleScreen({
     />
 
   )
+
 }
-
-

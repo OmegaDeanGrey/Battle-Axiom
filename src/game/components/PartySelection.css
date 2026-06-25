@@ -4,7 +4,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 92vh;
+    height: 90vh;
+    display: block;
+    justify-content: center;
 }
 
 .partybuttons {
@@ -12,7 +14,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 20px;
-        width: 180px;
+    width: 180px;
     height: 240px;
     margin: 15px;
     text-shadow: 1px 2px rgb(7, 7, 0);
@@ -48,6 +50,7 @@ h2 {
     box-shadow: 4px 4px 14px grey;
     display: flex;
     gap: 15px;
+    margin-left: 870px;
     justify-content: center;
     transition: transform 300ms;
 }

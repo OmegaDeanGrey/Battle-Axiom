@@ -3,11 +3,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 93vh;
-    padding: 30px;
-display: grid;
+    height: 96vh;
+    display: grid;
     justify-content: center;
     align-items: center;
+    border:4px rgb(10, 10, 10) double;
+    margin-top: -10px;
 }
 
 #MMTitle {

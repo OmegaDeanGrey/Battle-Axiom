@@ -1,0 +1,108 @@
+#worldmap {
+    background-image: url("/src/assets/BattleAxiomWM.png");
+background-position: center top 10px;
+    background-repeat: no-repeat;
+    background-size:  contain;
+    height: 90vh;
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+    transform: scale(1.16);
+
+    overflow: hidden;
+}
+
+.play-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #1212127d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-btn:hover {
+  background-color: #1111119b;
+}
+
+#playbutton {
+    height: 90px;
+    width: 90px;
+    border-radius: 70px;
+    border: 4px rgba(192, 182, 4, 0.086) dashed;
+      position: fixed;
+  top: 57px;
+  left: 179px;
+  color: rgba(255, 217, 0, 0.682);
+
+}
+
+.mist-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+      url("/MistOverlay.jpg");
+
+    background-repeat: repeat-x;
+
+    background-size: cover;
+
+    opacity: 0.25;
+
+    pointer-events: none;
+
+    animation:
+      driftClouds 40s linear infinite;
+
+}
+
+@keyframes driftClouds {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 1200px 0;
+    }
+
+}
+
+.WMButtons {
+  height: 70px;
+  width: 70px;
+  border: 2px rgba(240, 248, 255, 0.478) solid;
+  border-radius: 70px;
+  background-color: rgba(42, 42, 42, 0.208);
+  color: rgba(240, 248, 255, 0.866);
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  transition: transform 2s, background-color 2s;
+}
+
+.WMButtons:hover {
+  transform: scale(1.13);
+  background-color: rgba(0, 0, 0, 0.271);
+}
+
+
+#TwellButton {
+  font-size: 16px;
+        position: fixed;
+  top: 557px;
+  left: 290px;
+}
+
+#Secret {
+          position: fixed;
+  top: 17px;
+  right: 660px;
+  background-color: rgba(255, 255, 0, 0.018);
+  border: none;
+}

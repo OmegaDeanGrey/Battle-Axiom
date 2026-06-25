@@ -1,5 +1,5 @@
 import type { Unit } from "../../battle/models/unit"
-import { ComboRegistry } from "../data/ComboRegistry"
+// import { ComboRegistry } from "../data/ComboRegistry"
 import {
   RelationshipRegistry
 }
@@ -51,15 +51,15 @@ export default function PartySynergyPanel({
       )
   )
 
-  const unlockedCombos =
-  ComboRegistry.filter(
-    combo =>
+  // const unlockedCombos =
+  // ComboRegistry.filter(
+  //   combo =>
 
-      combo.members.every(
-        member =>
-          partyClasses.includes(member)
-      )
-  )
+  //     combo.members.every(
+  //       member =>
+  //         partyClasses.includes(member)
+  //     )
+  // )
 
   const tagCounts: Record<string, number> = {}
 
@@ -136,7 +136,7 @@ export default function PartySynergyPanel({
   )
 }
 
-
+*/}
 
 {
  partyEffects.map(effect => (
@@ -158,7 +158,7 @@ export default function PartySynergyPanel({
   </div>
 
  ))
-} */}
+} 
 {/* <h3>
   Combo Attacks
 </h3>

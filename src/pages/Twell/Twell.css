@@ -1,0 +1,66 @@
+#Twell {
+    background-image: url("/Twell.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:  cover;
+    height: 95vh;
+    width: 100%;
+    border: 3px gold solid;
+    display: grid;
+    justify-content: center;
+}
+
+.twell-button {
+    height: 40px;
+    width:190px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(240, 248, 255, 0.425);
+    border: 2px white solid;
+    border-radius: 5px;
+    text-shadow: 1px 1px white;
+    box-shadow: 4px 4px 12px black;
+    transition: transform 1s, background-color 2s;
+}
+
+.twell-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(240, 248, 255, 0.614);
+}
+
+#windmill-row {
+    position: fixed;
+    top: 200px;
+    left: 570px;
+}
+
+#mayor {
+    position: fixed;
+    top: 340px;
+    left: 790px;
+}
+
+#homestead {
+    position: fixed;
+    top: 320px;
+    left: 220px;
+}
+
+#quest-board {
+    position: fixed;
+    top: 520px;
+    right: 590px;
+}
+
+#item-shop {
+    position: fixed;
+    bottom: 500px;
+    left: 550px;
+}
+
+#weapon-shop {
+    position: fixed;
+    bottom: 420px;
+    right: 300px;
+}

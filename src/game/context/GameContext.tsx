@@ -17,6 +17,48 @@ type GameContextType = {
     party: Unit[]
   ) => void
 
+
+  itemShopUnlocked: boolean
+
+  setItemShopUnlocked: (
+    unlocked: boolean
+  ) => void
+
+
+  mayorUnlocked: boolean
+
+  setMayorUnlocked: (
+    unlocked: boolean
+  ) => void
+
+
+  weaponShopUnlocked: boolean
+
+  setWeaponShopUnlocked: (
+    unlocked: boolean
+  ) => void
+
+
+  questBoardUnlocked: boolean
+
+  setQuestBoardUnlocked: (
+    unlocked: boolean
+  ) => void
+
+
+  windmillRowUnlocked: boolean
+
+  setWindmillRowUnlocked: (
+    unlocked: boolean
+  ) => void
+
+
+  townOutskirtsUnlocked: boolean
+
+  setTownOutskirtsUnlocked: (
+    unlocked: boolean
+  ) => void
+
 }
 
 
@@ -35,13 +77,55 @@ export function GameProvider({
   const [party, setParty] =
     useState<Unit[]>([])
 
+  const [
+  itemShopUnlocked,
+  setItemShopUnlocked
+] = useState(false)
+
+const [
+  mayorUnlocked,
+  setMayorUnlocked
+] = useState(false)
+
+const [
+  weaponShopUnlocked,
+  setWeaponShopUnlocked
+] = useState(false)
+
+const [
+  questBoardUnlocked,
+  setQuestBoardUnlocked
+] = useState(false)
+
+const [
+  windmillRowUnlocked,
+  setWindmillRowUnlocked
+] = useState(false)
+
+const [
+  townOutskirtsUnlocked,
+  setTownOutskirtsUnlocked
+] = useState(false)
+
 
   return (
 
     <GameContext.Provider
       value={{
         party,
-        setParty
+        setParty,
+        itemShopUnlocked,
+        setItemShopUnlocked,
+        mayorUnlocked,
+        setMayorUnlocked,
+        weaponShopUnlocked,
+        setWeaponShopUnlocked,
+        questBoardUnlocked,
+        setQuestBoardUnlocked,
+        windmillRowUnlocked,
+        setWindmillRowUnlocked,
+        townOutskirtsUnlocked,
+        setTownOutskirtsUnlocked
       }}
     >
 

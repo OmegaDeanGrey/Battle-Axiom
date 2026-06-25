@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
+
+import { useGame } from "../../game/context/GameContext"
 
 import "./Twell.css"
 
@@ -14,6 +16,39 @@ type Location =
 
 export default function TwellTown() {
 
+
+    const audioRef =
+      useRef<HTMLAudioElement>(null)
+  
+    const [playing, setPlaying] =
+      useState(false)
+  
+  
+    function toggleAudio() {
+  
+      const audio =
+        audioRef.current
+  
+      if (!audio) {
+        return
+      }
+  
+  
+      if (audio.paused) {
+  
+        audio.play()
+  
+        setPlaying(true)
+  
+      } else {
+  
+        audio.pause()
+  
+        setPlaying(false)
+  
+      }
+  
+    }
   const [activeLocation, setActiveLocation] =
     useState<Location>(null)
 
@@ -51,24 +86,59 @@ export default function TwellTown() {
     }
 
   }
+const {
 
+  itemShopUnlocked,
+
+  mayorUnlocked,
+
+  setItemShopUnlocked,
+
+  setMayorUnlocked,
+
+  questBoardUnlocked,
+
+} = useGame()
 
   return (
 
     <div id="Twell">
 
-      {/* PLACE THESE OVER THE MAP */}
-           <button
-        className="twell-button"
-        id="windmill-row"
-        onClick={() =>
-          setActiveLocation(
-            "windmillRow"
-          )
-        }
+        <audio
+        ref={audioRef}
+        loop
+        autoPlay
+   
       >
-        Windmill Row
-      </button>
+
+        <source
+          src="/Roukus.mp3"
+          type="audio/mpeg"
+        />
+
+        Your browser does not support audio.
+
+      </audio>
+ 
+{
+  questBoardUnlocked && (
+
+    <button
+      className="twell-button"
+      id="windmill-row"
+      onClick={() =>
+        setActiveLocation(
+          "windmillRow"
+        )
+      }
+    >
+      Windmill Row
+    </button>
+
+  )
+}
+      {
+  mayorUnlocked && (
             <button
         className="twell-button"
         id="mayor"
@@ -76,22 +146,31 @@ export default function TwellTown() {
           setActiveLocation(
             "mayor"
           )
+       
         }
       >
         Mayor
       </button>
-            <button
-        className="twell-button"
-        id="quest-board"
-        onClick={() =>
-          setActiveLocation(
-            "questBoard"
-          )
-        }
-      >
-        Quest Board
-      </button>
+      
+      )
+       }
+{
+  mayorUnlocked && (
 
+    <button
+      className="twell-button"
+      id="quest-board"
+      onClick={() =>
+        setActiveLocation(
+          "questBoard"
+        )
+      }
+    >
+      Quest Board
+    </button>
+
+  )
+}
       <button
         className="twell-button"
         id="homestead"
@@ -103,6 +182,9 @@ export default function TwellTown() {
       >
         Homestead
       </button>
+      {
+  itemShopUnlocked && (
+
             <button
         className="twell-button"
         id="item-shop"
@@ -114,6 +196,11 @@ export default function TwellTown() {
       >
         Item Shop
       </button>
+  )}
+
+{
+  mayorUnlocked && (
+
            <button
         className="twell-button"
         id="weapon-shop"
@@ -125,7 +212,7 @@ export default function TwellTown() {
       >
         Weapon Shop
       </button>
-
+  )}
       {
 
         activeLocation && (
@@ -266,7 +353,26 @@ export default function TwellTown() {
 
                   <div>
 
-                    Party management goes here
+                       <p>
+      Your family welcomes you home.
+    </p>
+
+
+    <button
+
+      onClick={() => {
+
+        setItemShopUnlocked(true)
+
+        setMayorUnlocked(true)
+
+      }}
+
+    >
+
+      Continue Story
+
+    </button>
 
                   </div>
 

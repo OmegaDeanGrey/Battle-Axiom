@@ -5,6 +5,23 @@ import { useGame } from "../../game/context/GameContext"
 import DialogueBox
 from "../../game/components/DialogueBox"
 
+import {
+  gateGuardDialogue
+}
+from "../../game/dialogue/twell/gateGuard"
+
+
+import {
+  innDialogue
+}
+from "../../game/dialogue/twell/innKeeper"
+
+
+import {
+  villagerDialogue
+}
+from "../../game/dialogue/twell/villager"
+
 import "./Twell.css"
 
 
@@ -24,14 +41,10 @@ export default function TwellTown() {
 
 const navigate = useNavigate()
 
-
-
 const [
   gateDialogueIndex,
   setGateDialogueIndex
 ] = useState(0)
-
-
 
 const [
   innDialogueIndex,
@@ -42,136 +55,6 @@ const [
   villagerDialogueIndex,
   setVillagerDialogueIndex
 ] = useState(-1)
-
-const gateGuardDialogue = [
-
-  {
-    speaker: "Gate Guard",
-
-    portrait:
-         "/TwellGateGuard.png",
-
-    text:
-      "Halt!... Ah, it's you. Welcome back to Twell."
-
-  },
-
-  {
-    speaker: "Gate Guard",
-
-    portrait:
-        "/TwellGateGuard.png",
-
-    text:
-      "Strange rumors have been spreading beyond the fields."
-
-  },
-
-  {
-    speaker: "Gate Guard",
-
-    portrait:
-      "/TwellGateGuard.png",
-
-    text:
-      "Your family will want to see you first."
-
-  },
-
-  {
-    speaker: "Gate Guard",
-
-    portrait:
-      "/TwellGateGuard.png",
-
-    text:
-      "Head to your inn. The mayor can wait."
-
-  }
-
-]
-
-
-
-const innDialogue = [
-
-  {
-    speaker: "InnKeeper",
-
-    portrait:
-     "/TwellInnkeeper.png",
-
-    text:
-      "Welcome home, travelers."
-
-  },
-
-  {
-    speaker: "InnKeeper",
-
-    portrait:
-     "/TwellInnkeeper.png",
-
-    text:
-      "Twell has been peaceful for many years."
-
-  },
-
-  {
-    speaker: "InnKeeper",
-
-    portrait:
-      "/TwellInnkeeper.png",
-
-    text:
-      "But strange events have begun to trouble the outskirts."
-
-  },
-
-  {
-    speaker: "InnKeeper",
-
-    portrait:
-      "/TwellInnkeeper.png",
-
-    text:
-      "The mayor wishes to meet your fellowship."
-
-  }
-
-]
-
-const villagerDialogue = [
-
-  {
-    speaker: "Villager",
-
-    portrait: "/TwellWomanVillager.png",
-
-    text:
-      "Have you heard? Strange lights have been seen beyond the windmills."
-  },
-
-  {
-    speaker: "Villager",
-
-    portrait: "/TwellWomanVillager.png",
-
-    text:
-      "Some say they're spirits. Others think they're soldiers."
-  },
-
-  {
-    speaker: "Villager",
-
-    portrait: "/TwellWomanVillager.png",
-
-    text:
-      "Whatever they are... I don't think they're here by accident."
-  }
-
-]
-
 
 const audioRef =
   useRef<HTMLAudioElement>(null)
@@ -187,280 +70,168 @@ function toggleAudio() {
 
   const audio =
     audioRef.current
-
-
   if (!audio) {
     return
   }
-
-
   if(audio.paused) {
-
     audio.play()
-
     setPlaying(true)
-
   }
-
   else {
-
     audio.pause()
-
     setPlaying(false)
-
   }
-
 }
-
-
 
 const [activeLocation, setActiveLocation] =
 useState<Location>(null)
-
-
 
 const locationData = {
 
 
 weaponShop: {
-
 title: "Weapon Shop",
-
 background:
 "/WeaponShopInterior.png"
-
 },
-
 
 itemShop: {
-
 title: "Item Shop",
-
 background:
 "/ItemShopInterior.png"
-
 },
-
 
 windmillRow: {
-
 title: "Windmill Row",
-
 background:
 "/WindmillRow.png"
-
 },
 
-
 questBoard: {
-
 title: "Quest Board",
-
 background:
 "/QuestBoard.png"
-
 },
 
 
 mayor: {
-
 title: "Mayor's Office",
-
 background:
 "/MayorOffice.png"
-
 },
 
-
 inn: {
-
 title: "Inn",
-
 background:
 "/Inn.png"
-
 }
 
-
 }
-
 
 
 const {
-
 itemShopUnlocked,
-
 mayorUnlocked,
-
 questBoardUnlocked,
-
 setItemShopUnlocked,
-
 setMayorUnlocked
-
-
 } = useGame()
 
 
-
-
-
 return (
-
 <div id="Twell">
-
-
 <audio
-
 ref={audioRef}
-
 loop
-
 autoPlay
-
 >
 
 <source
-
 src="/Roukus.mp3"
-
 type="audio/mpeg"
-
 />
 
 </audio>
 
 
-
-
-
 {
 questBoardUnlocked && (
-
 <button
-
 className="twell-button"
-
 id="windmill-row"
-
 onClick={() =>
 setActiveLocation(
 "windmillRow"
 )
 }
-
 >
-
 Windmill Row
-
 </button>
-
 )
 }
 
 
-
-
 {
 mayorUnlocked && (
-
 <button
-
 className="twell-button"
-
 id="mayor"
-
 onClick={() =>
 setActiveLocation(
 "mayor"
 )
 }
-
 >
-
 Mayor
-
 </button>
-
 )
 }
 
 
-
-
 {
 mayorUnlocked && (
-
 <button
-
 className="twell-button"
-
 id="quest-board"
-
 onClick={() =>
 setActiveLocation(
 "questBoard"
 )
 }
-
 >
-
 Quest Board
-
 </button>
-
 )
 }
 
 
-
-
 <button
-
 className="twell-button"
-
 id="inn"
-
 onClick={() =>
 setActiveLocation(
 "inn"
 )
 }
-
 >
-
 Inn
-
 </button>
-
-
-
-
 
 
 {
 itemShopUnlocked && (
-
 <button
-
 className="twell-button"
-
 id="item-shop"
-
 onClick={() =>
 setActiveLocation(
 "itemShop"
 )
 }
-
 >
-
 Item Shop
-
 </button>
-
 )
-
 }
 
 
@@ -471,322 +242,165 @@ Item Shop
     setVillagerDialogueIndex(0)
   }}
 >
-
 ▼
-
 </button>
 
 {
 mayorUnlocked && (
-
 <button
-
 className="twell-button"
-
 id="weapon-shop"
-
 onClick={() =>
 setActiveLocation(
 "weaponShop"
 )
 }
-
 >
-
 Weapon Shop
-
 </button>
-
 )
-
 }
-
-
 
 
 <button
-
 className="twell-button"
-
 id="exittwellbutton"
-
 onClick={() =>
 navigate(-1)
 }
-
 >
-
 Exit Town
-
 </button>
 
 
-
-
-
-
-
 {
-
 activeLocation && (
-
 <div className="modal-overlay">
 
-
 <div
-
 className="town-modal"
-
 style={{
-
 backgroundImage:
-
 `url(${
 locationData[
 activeLocation
 ].background
 })`
-
 }}
-
 >
 
-
-
 <button
-
 className="close-button"
-
 onClick={() =>
 setActiveLocation(null)
 }
-
 >
-
 X
-
 </button>
 
-
-
 <h1>
-
 {
 locationData[
 activeLocation
 ].title
 }
-
 </h1>
 
 
-
-
-
-
 {
-
 activeLocation === "inn" && (
-
 <div>
-
 <button
-
 onClick={() =>
 setInnDialogueIndex(0)
 }
-
 >
-
 Speak With InnKeeper
-
 </button>
-
-
 </div>
-
 )
-
 }
 
-
-
-
 {
-
 activeLocation === "weaponShop" && (
-
 <div>
-
 Weapon inventory goes here
-
 </div>
-
 )
-
 }
 
-
-
-
 {
-
 activeLocation === "itemShop" && (
-
 <div>
-
 Consumables go here
-
 </div>
-
 )
-
 }
 
-
-
-
 {
-
 activeLocation === "windmillRow" && (
-
 <div>
-
 Town residents go here
-
 </div>
-
 )
-
 }
 
-
-
-
 {
-
 activeLocation === "questBoard" && (
-
 <div>
-
 Available quests go here
-
 </div>
-
 )
-
 }
 
-
-
-
 {
-
 activeLocation === "mayor" && (
-
 <div>
-
 Story dialogue goes here
-
 </div>
-
 )
-
 }
-
-
-
-
 </div>
 
 </div>
-
 )
-
 }
-
-
-
-
 
 {
-
 gateDialogueIndex <
-
 gateGuardDialogue.length && (
-
-
 <DialogueBox
-
-
 speaker={
-
 gateGuardDialogue[
-
 gateDialogueIndex
-
 ].speaker
-
 }
-
-
-
 portrait={
-
 gateGuardDialogue[
-
 gateDialogueIndex
-
 ].portrait
-
 }
-
-
-
 text={
-
 gateGuardDialogue[
-
 gateDialogueIndex
-
 ].text
-
 }
-
-
-
 onContinue={() => {
-
-
 const next =
 gateDialogueIndex + 1
-
-
-
 if(
 next >= gateGuardDialogue.length
 ){
-
 setGateDialogueIndex(
 gateGuardDialogue.length
 )
-
 }
-
 else {
-
 setGateDialogueIndex(next)
-
 }
-
-
 }}
-
-
 />
-
 )
-
 }
 
 

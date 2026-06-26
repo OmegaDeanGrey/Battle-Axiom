@@ -14,7 +14,7 @@ type Location =
   | "windmillRow"
   | "questBoard"
   | "mayor"
-  | "homestead"
+  | "inn"
   | null
 
 
@@ -34,8 +34,8 @@ const [
 
 
 const [
-  homesteadDialogueIndex,
-  setHomesteadDialogueIndex
+  innDialogueIndex,
+  setInnDialogueIndex
 ] = useState(-1)
 
 const [
@@ -49,7 +49,7 @@ const gateGuardDialogue = [
     speaker: "Gate Guard",
 
     portrait:
-      "/portraits/GateGuard.png",
+         "/TwellGateGuard.png",
 
     text:
       "Halt!... Ah, it's you. Welcome back to Twell."
@@ -60,7 +60,7 @@ const gateGuardDialogue = [
     speaker: "Gate Guard",
 
     portrait:
-      "/portraits/GateGuard.png",
+        "/TwellGateGuard.png",
 
     text:
       "Strange rumors have been spreading beyond the fields."
@@ -71,7 +71,7 @@ const gateGuardDialogue = [
     speaker: "Gate Guard",
 
     portrait:
-      "/portraits/GateGuard.png",
+      "/TwellGateGuard.png",
 
     text:
       "Your family will want to see you first."
@@ -82,10 +82,10 @@ const gateGuardDialogue = [
     speaker: "Gate Guard",
 
     portrait:
-      "/portraits/GateGuard.png",
+      "/TwellGateGuard.png",
 
     text:
-      "Head to your homestead. The mayor can wait."
+      "Head to your inn. The mayor can wait."
 
   }
 
@@ -93,13 +93,13 @@ const gateGuardDialogue = [
 
 
 
-const homesteadDialogue = [
+const innDialogue = [
 
   {
-    speaker: "Grandmother",
+    speaker: "InnKeeper",
 
     portrait:
-      "/portraits/Grandmother.png",
+     "/TwellInnkeeper.png",
 
     text:
       "Welcome home, travelers."
@@ -107,10 +107,10 @@ const homesteadDialogue = [
   },
 
   {
-    speaker: "Grandmother",
+    speaker: "InnKeeper",
 
     portrait:
-      "/portraits/Grandmother.png",
+     "/TwellInnkeeper.png",
 
     text:
       "Twell has been peaceful for many years."
@@ -118,10 +118,10 @@ const homesteadDialogue = [
   },
 
   {
-    speaker: "Grandmother",
+    speaker: "InnKeeper",
 
     portrait:
-      "/portraits/Grandmother.png",
+      "/TwellInnkeeper.png",
 
     text:
       "But strange events have begun to trouble the outskirts."
@@ -129,10 +129,10 @@ const homesteadDialogue = [
   },
 
   {
-    speaker: "Grandmother",
+    speaker: "InnKeeper",
 
     portrait:
-      "/portraits/Grandmother.png",
+      "/TwellInnkeeper.png",
 
     text:
       "The mayor wishes to meet your fellowship."
@@ -146,7 +146,7 @@ const villagerDialogue = [
   {
     speaker: "Villager",
 
-    portrait: "/portraits/Villager1.png",
+    portrait: "/TwellWomanVillager.png",
 
     text:
       "Have you heard? Strange lights have been seen beyond the windmills."
@@ -155,7 +155,7 @@ const villagerDialogue = [
   {
     speaker: "Villager",
 
-    portrait: "/portraits/Villager1.png",
+    portrait: "/TwellWomanVillager.png",
 
     text:
       "Some say they're spirits. Others think they're soldiers."
@@ -164,7 +164,7 @@ const villagerDialogue = [
   {
     speaker: "Villager",
 
-    portrait: "/portraits/Villager1.png",
+    portrait: "/TwellWomanVillager.png",
 
     text:
       "Whatever they are... I don't think they're here by accident."
@@ -272,12 +272,12 @@ background:
 },
 
 
-homestead: {
+inn: {
 
-title: "Homestead",
+title: "Inn",
 
 background:
-"/Homestead.png"
+"/Inn.png"
 
 }
 
@@ -419,17 +419,17 @@ Quest Board
 
 className="twell-button"
 
-id="homestead"
+id="inn"
 
 onClick={() =>
 setActiveLocation(
-"homestead"
+"inn"
 )
 }
 
 >
 
-Homestead
+Inn
 
 </button>
 
@@ -586,19 +586,19 @@ activeLocation
 
 {
 
-activeLocation === "homestead" && (
+activeLocation === "inn" && (
 
 <div>
 
 <button
 
 onClick={() =>
-setHomesteadDialogueIndex(0)
+setInnDialogueIndex(0)
 }
 
 >
 
-Speak With Grandmother
+Speak With InnKeeper
 
 </button>
 
@@ -795,11 +795,11 @@ setGateDialogueIndex(next)
 
 {
 
-homesteadDialogueIndex >= 0 &&
+innDialogueIndex >= 0 &&
 
-homesteadDialogueIndex <
+innDialogueIndex <
 
-homesteadDialogue.length && (
+innDialogue.length && (
 
 
 <DialogueBox
@@ -807,9 +807,9 @@ homesteadDialogue.length && (
 
 speaker={
 
-homesteadDialogue[
+innDialogue[
 
-homesteadDialogueIndex
+innDialogueIndex
 
 ].speaker
 
@@ -819,9 +819,9 @@ homesteadDialogueIndex
 
 portrait={
 
-homesteadDialogue[
+innDialogue[
 
-homesteadDialogueIndex
+innDialogueIndex
 
 ].portrait
 
@@ -831,9 +831,9 @@ homesteadDialogueIndex
 
 text={
 
-homesteadDialogue[
+innDialogue[
 
-homesteadDialogueIndex
+innDialogueIndex
 
 ].text
 
@@ -845,13 +845,13 @@ onContinue={() => {
 
 
 const next =
-homesteadDialogueIndex + 1
+innDialogueIndex + 1
 
 
 
 if(
 
-next >= homesteadDialogue.length
+next >= innDialogue.length
 
 ){
 
@@ -860,7 +860,7 @@ setMayorUnlocked(true)
 
 setItemShopUnlocked(true)
 
-setHomesteadDialogueIndex(-1)
+setInnDialogueIndex(-1)
 
 
 }
@@ -868,7 +868,7 @@ setHomesteadDialogueIndex(-1)
 else {
 
 
-setHomesteadDialogueIndex(next)
+setInnDialogueIndex(next)
 
 
 }

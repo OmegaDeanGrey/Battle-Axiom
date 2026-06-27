@@ -123,7 +123,7 @@ background:
 inn: {
 title: "Inn",
 background:
-"/Inn.png"
+"/TwellInn.png"
 }
 
 }
@@ -278,15 +278,19 @@ activeLocation && (
 <div className="modal-overlay">
 
 <div
-className="town-modal"
-style={{
-backgroundImage:
-`url(${
-locationData[
-activeLocation
-].background
-})`
-}}
+  className="town-modal"
+  style={
+    activeLocation === "inn"
+      ? {}
+      : {
+          backgroundImage:
+            `url(${
+              locationData[
+                activeLocation
+              ].background
+            })`
+        }
+  }
 >
 
 <button
@@ -309,15 +313,41 @@ activeLocation
 
 {
 activeLocation === "inn" && (
-<div>
+
+<div
+
+  id="twellinn"
+
+  style={{
+    backgroundImage: "url('/TwellInn.png')"
+  }}
+
+>
+    <video
+    className="fire-video"
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+    <source
+      src="/fire.mp4"
+      type="video/mp4"
+    />
+  </video>
+
 <button
 onClick={() =>
 setInnDialogueIndex(0)
 }
 >
+
 Speak With InnKeeper
+
 </button>
+
 </div>
+
 )
 }
 

@@ -134,7 +134,9 @@ itemShopUnlocked,
 mayorUnlocked,
 questBoardUnlocked,
 setItemShopUnlocked,
-setMayorUnlocked
+setMayorUnlocked,
+sleepingQuartersUnlocked,
+setSleepingQuartersUnlocked
 } = useGame()
 
 
@@ -335,8 +337,33 @@ activeLocation === "inn" && (
       type="video/mp4"
     />
   </video>
+  <div className="candle candle1">
+    <div className="flame"></div>
+    <div className="glow"></div>
+</div>
+<div className="candle candle2">
+    <div className="flame"></div>
+    <div className="glow"></div>
+</div>
+<div className="candle candle3">
+    <div className="flame"></div>
+    <div className="glow"></div>
+</div>
+<div className="candle candle4">
+    <div className="flame"></div>
+    <div className="glow"></div>
+</div>
+<div className="candle candle5">
+    <div className="flame"></div>
+    <div className="glow"></div>
+</div>
+<div className="candle candle6">
+    <div className="flame"></div>
+    <div className="glow"></div>
+</div>
 
 <button
+className="speaktoinnkeeper"
 onClick={() =>
 setInnDialogueIndex(0)
 }
@@ -345,6 +372,27 @@ setInnDialogueIndex(0)
 Speak With InnKeeper
 
 </button>
+{
+  sleepingQuartersUnlocked && (
+
+    <button
+      className="speaktoinnkeeper"
+      id="sleepingquarters"
+
+      onClick={() => {
+
+        console.log("Sleeping Quarters")
+
+      }}
+
+    >
+
+      Sleeping Quarters
+
+    </button>
+
+  )
+}
 
 </div>
 
@@ -500,9 +548,11 @@ next >= innDialogue.length
 ){
 
 
-setMayorUnlocked(true)
+// setMayorUnlocked(true)
 
-setItemShopUnlocked(true)
+// setItemShopUnlocked(true)
+
+setSleepingQuartersUnlocked(true)
 
 setInnDialogueIndex(-1)
 

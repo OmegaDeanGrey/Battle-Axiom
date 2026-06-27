@@ -17,6 +17,12 @@ type GameContextType = {
     party: Unit[]
   ) => void
 
+  sleepingQuartersUnlocked: boolean
+
+setSleepingQuartersUnlocked: (
+  unlocked: boolean
+) => void
+
 
   itemShopUnlocked: boolean
 
@@ -77,6 +83,11 @@ export function GameProvider({
   const [party, setParty] =
     useState<Unit[]>([])
 
+const [
+  sleepingQuartersUnlocked,
+  setSleepingQuartersUnlocked
+] = useState(false)
+
   const [
   itemShopUnlocked,
   setItemShopUnlocked
@@ -114,6 +125,8 @@ const [
       value={{
         party,
         setParty,
+        sleepingQuartersUnlocked,
+        setSleepingQuartersUnlocked,
         itemShopUnlocked,
         setItemShopUnlocked,
         mayorUnlocked,

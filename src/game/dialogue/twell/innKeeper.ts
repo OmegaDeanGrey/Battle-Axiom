@@ -40,7 +40,18 @@ export const innDialogue = [
       "/TwellInnkeeper.png",
 
     text:
-      "The mayor wishes to meet your fellowship."
+      "Ye look Exhausted. Ye should get some rest."
+
+  },
+
+    {
+    speaker: "InnKeeper",
+
+    portrait:
+      "/TwellInnkeeper.png",
+
+    text:
+      "The room at the top of the stairs is yers."
 
   }
 

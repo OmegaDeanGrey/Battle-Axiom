@@ -29,12 +29,191 @@
     background-color: rgba(240, 248, 255, 0.614);
 }
 
+#exittwellbutton{
+    position: fixed;
+    bottom: 30px;
+    left: 900px;
+    color: rgb(26, 26, 26);
+    text-shadow: 2px 2px rgb(220, 216, 216);
+}
+
+#playbuttontwell {
+    position: fixed;
+    top: 130px;
+    right: 485px;
+    color: #ffffff00;
+    background-color: #f7f7d819;
+}
+
+.birds {
+
+    position: absolute;
+        mix-blend-mode:darken;
+    top: 120px;
+    left: -100px;
+    opacity: .9;
+    width: 60px;
+
+    animation:
+        flyAcross 93s linear infinite,
+        bob 2s ease-in-out infinite;
+
+}
+
+@keyframes flyAcross {
+
+    /* Wait off-screen */
+
+    0% {
+        left: -120px;
+    }
+
+    70% {
+        left: -120px;
+    }
+
+    /* Fly across */
+
+    100% {
+        left: calc(100% + 120px);
+    }
+
+}
+
+@keyframes bob {
+
+    0%   { margin-top: 0; }
+
+    50%  { margin-top: -3px; }
+
+    100% { margin-top: 0; }
+
+}
+
+.waterfall {
+    overflow: hidden;
+    
+    pointer-events: none;
+
+    mix-blend-mode:lighten;
+
+    opacity: .7;
+
+}
+
+
+.waterfall video {
+    position: fixed;
+    left:177px;
+    top: 312px;
+    width: 17px;
+    height: 47px;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+
+.fountain {
+        position: fixed;
+    right:1079px;
+    bottom: 327px;
+    object-fit: cover;
+
+
+}
+
+.fountain video {
+ transform: scaleY(3.9);
+        width: 5px;
+    border-radius: 10px;
+     mix-blend-mode:lighten;
+}
+
+.fountain2 {
+        position: fixed;
+    right:1014px;
+    bottom: 331px;
+    object-fit: cover;
+}
+
+.fountain2 video {
+ transform: scaleY(3.8);
+        width: 5px;
+    border-radius: 10px;
+    mix-blend-mode:lighten;
+}
+
+.windmill1 {
+
+    position: absolute;
+
+    left: 615px;
+    top: 170px;
+
+    width: 60px;
+    height: 60px;
+}
+
+.windmill2 {
+
+    position: absolute;
+
+    left: 214px;
+    top: 221px;
+
+    width: 40px;
+    height: 40px;
+}
+
+.windmill-blades {
+
+    width: 40px;
+    height: 40px;
+
+    transform-origin: center center;
+
+    animation: spinWindmill 12s linear infinite;
+     mix-blend-mode:darken;
+    pointer-events: none;
+}
+
+.windmill1 .windmill-blades{
+    animation-duration:14s;
+    position: fixed;
+    top: 161px;
+    right: 814px;
+}
+
+.windmill2 .windmill-blades{
+    animation-duration:11s;
+}
+
+.windmill3 .windmill-blades{
+    animation-duration:16s;
+}
+
+@keyframes spinWindmill {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
 .close-button {
     color: aliceblue;
-    border: 1px  aliceblue solid;
+    font-weight: bold;
+    border: 3px  rgba(240, 248, 255, 0.648) solid;
     background-color: rgba(0, 0, 0, 0.485);
     border-radius: 50px;
     transition: transform 2s, background-color 2s;
+    position: fixed;
+    top: 200px;
+    left: 470px;
 }
 
 .close-button:hover {
@@ -104,6 +283,18 @@ h1 {
 .speaktoinnkeeper:hover{
     transform: scale(1.2);
     background-color: rgba(240, 248, 255, 0.256);
+}
+
+#innpatron1 {
+    position: fixed;
+    left: 670px;
+    bottom: 475px;
+}
+
+#innpatron2 {
+    position: fixed;
+    right: 857px;
+    bottom: 515px;
 }
 
 #sleepingquarters {

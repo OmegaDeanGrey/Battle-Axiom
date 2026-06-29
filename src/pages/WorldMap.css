@@ -75,28 +75,119 @@ background-position: center top 10px;
 }
 
 .WMButtons {
-  height: 70px;
-  width: 70px;
-  border: 2px rgba(240, 248, 255, 0.478) solid;
-  border-radius: 70px;
-  background-color: rgba(42, 42, 42, 0.208);
-  color: rgba(240, 248, 255, 0.866);
-  font-weight: bold;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  transition: transform 2s, background-color 2s;
+
+    position: absolute;
+
+    width: 75px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(255, 217, 0, 0.452);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.122),
+            rgba(120, 80, 20, 0.25)
+        );
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    text-shadow:
+        2px 2px 3px black;
+
+    cursor: pointer;
+
+
+    box-shadow:
+
+        0 0 10px rgba(0, 0, 0, 0.797),
+
+        inset 0 0 15px rgba(255, 217, 0, 0.398);
+
+
+    transition:
+
+        transform .3s,
+
+        filter .3s;
+
 }
 
+
+.WMButtons::before {
+
+    content:"✦";
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size:65px;
+
+    color:
+
+        rgba(247, 211, 7, 0.302);
+
+    z-index:-1;
+
+}
+
+
 .WMButtons:hover {
-  transform: scale(1.13);
-  background-color: rgba(0, 0, 0, 0.271);
+
+    transform:
+
+        scale(1.15)
+
+        rotate(7deg);
+
+
+    filter:
+
+        brightness(1.3);
+
+}
+
+.WMButtons {
+
+background:
+
+conic-gradient(
+
+    rgba(255, 217, 0, 0.145),
+
+    rgba(80, 50, 10, 0.178),
+
+    rgba(255, 217, 0, 0.288),
+
+    rgba(80, 50, 10, 0.418)
+
+);
+
 }
 
 
 #TwellButton {
-  font-size: 16px;
+  font-size: 14px;
         position: fixed;
   top: 557px;
   left: 290px;
+  height: 60px;
+  width: 60px;
 }
 
 #Secret {

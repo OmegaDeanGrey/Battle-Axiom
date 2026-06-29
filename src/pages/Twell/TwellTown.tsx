@@ -16,6 +16,15 @@ import {
 }
 from "../../game/dialogue/twell/innKeeper"
 
+import {
+  innPatron1Dialogue
+}
+from "../../game/dialogue/twell/innPatron1"
+
+import {
+  innPatron2Dialogue
+}
+from "../../game/dialogue/twell/innPatron2"
 
 import {
   villagerDialogue
@@ -45,6 +54,16 @@ const [
   gateDialogueIndex,
   setGateDialogueIndex
 ] = useState(0)
+
+const [
+  innPatron1DialogueIndex,
+  setInnPatron1DialogueIndex
+] = useState(-1)
+
+const [
+  innPatron2DialogueIndex,
+  setInnPatron2DialogueIndex
+] = useState(-1)
 
 const [
   innDialogueIndex,
@@ -154,7 +173,75 @@ type="audio/mpeg"
 />
 
 </audio>
+  <img
+    src="/Birds.png"
+    className="birds"
+    alt=""
+  />
 
+  <div className="waterfall">
+
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+
+    <source
+      src="/WaterFall.mp4"
+      type="video/mp4"
+    />
+
+  </video>
+
+</div>
+  <div className="fountain">
+
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+
+    <source
+      src="/WaterFall.mp4"
+      type="video/mp4"
+    />
+
+  </video>
+
+</div>
+  <div className="fountain2">
+
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+
+    <source
+      src="/WaterFall.mp4"
+      type="video/mp4"
+    />
+
+  </video>
+
+</div>
+<div className="windmill1">
+    <img
+        src="/WindmillBlades.png"
+        className="windmill-blades"
+    />
+</div>
+<div className="windmill2">
+    <img
+        src="/WindmillBlades.png"
+        className="windmill-blades"
+    />
+</div>
 
 {
 questBoardUnlocked && (
@@ -268,11 +355,30 @@ Weapon Shop
 className="twell-button"
 id="exittwellbutton"
 onClick={() =>
-navigate(-1)
+navigate("/world")
 }
 >
 Exit Town
 </button>
+       <button
+
+          onClick={toggleAudio}
+          id="playbuttontwell"
+          className={
+            playing
+              ? "play-btn playing"
+              : "play-btn"
+          }
+
+        >
+
+          {
+            playing
+              ? "| |"
+              : "Play"
+          }
+
+        </button>
 
 
 {
@@ -295,14 +401,7 @@ activeLocation && (
   }
 >
 
-<button
-className="close-button"
-onClick={() =>
-setActiveLocation(null)
-}
->
-X
-</button>
+
 
 <h1>
 {
@@ -325,6 +424,14 @@ activeLocation === "inn" && (
   }}
 
 >
+  <button
+className="close-button"
+onClick={() =>
+setActiveLocation(null)
+}
+>
+X
+</button>
     <video
     className="fire-video"
     autoPlay
@@ -361,6 +468,24 @@ activeLocation === "inn" && (
     <div className="flame"></div>
     <div className="glow"></div>
 </div>
+<button
+  id="innpatron1"
+  className="npc-marker"
+  onClick={() => {
+    setInnPatron1DialogueIndex(0)
+  }}
+>
+▼
+</button>
+<button
+  id="innpatron2"
+  className="npc-marker"
+  onClick={() => {
+    setInnPatron2DialogueIndex(0)
+  }}
+>
+▼
+</button>
 
 <button
 className="speaktoinnkeeper"
@@ -481,7 +606,79 @@ setGateDialogueIndex(next)
 )
 }
 
+{
+innPatron1DialogueIndex >= 0 &&
+innPatron1DialogueIndex < innPatron1Dialogue.length && (
+<DialogueBox
+speaker={
+innPatron1Dialogue[
+innPatron1DialogueIndex
+].speaker
+}
+portrait={
+innPatron1Dialogue[
+innPatron1DialogueIndex
+].portrait
+}
+text={
+innPatron1Dialogue[
+innPatron1DialogueIndex
+].text
+}
+onContinue={() => {
+const next =
+innPatron1DialogueIndex + 1
+if(
+next >= innPatron1Dialogue.length
+){
+setInnPatron1DialogueIndex(
+innPatron1Dialogue.length
+)
+}
+else {
+setInnPatron1DialogueIndex(next)
+}
+}}
+/>
+)
+}
 
+{
+innPatron2DialogueIndex >= 0 &&
+innPatron2DialogueIndex < innPatron2Dialogue.length && (
+<DialogueBox
+speaker={
+innPatron2Dialogue[
+innPatron2DialogueIndex
+].speaker
+}
+portrait={
+innPatron2Dialogue[
+innPatron2DialogueIndex
+].portrait
+}
+text={
+innPatron2Dialogue[
+innPatron2DialogueIndex
+].text
+}
+onContinue={() => {
+const next =
+innPatron2DialogueIndex + 1
+if(
+next >= innPatron2Dialogue.length
+){
+setInnPatron2DialogueIndex(
+innPatron2Dialogue.length
+)
+}
+else {
+setInnPatron2DialogueIndex(next)
+}
+}}
+/>
+)
+}
 
 
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 import { useBattle } from "../hooks/useBattle"
 
@@ -20,7 +20,8 @@ export default function BattleView({
   units
 }: Props) {
 
-
+const audioRef =
+  useRef<HTMLAudioElement>(null)
   const { battle, tick, act } =
     useBattle(units)
 
@@ -55,6 +56,18 @@ export default function BattleView({
   return (
 
     <div style={{ padding: 20 }}>
+<audio
+ref={audioRef}
+loop
+autoPlay
+>
+
+<source
+src="/Hype&Venus.mp3"
+type="audio/mpeg"
+/>
+
+</audio>
 
 
       <h1>

@@ -77,13 +77,13 @@ export default function App() {
           path="/battle"
           element={
 
-            party.length > 0 && (
+            // party.length > 0 && (
 
               <BattleScreen
                 party={party}
               />
 
-            )
+            // )
 
           }
         />

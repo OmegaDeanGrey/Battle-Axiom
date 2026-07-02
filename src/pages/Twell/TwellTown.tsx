@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useGame } from "../../game/context/GameContext"
 
@@ -26,6 +26,10 @@ import {
 }
 from "../../game/dialogue/twell/innPatron2"
 
+import {
+  createSleepDialogue
+}
+from "../../game/dialogue/createSleepDialogue"
 import {
   villagerDialogue
 }
@@ -75,15 +79,106 @@ const [
   setVillagerDialogueIndex
 ] = useState(-1)
 
+const [
+  storyDialogue,
+  setStoryDialogue
+] = useState<{
+  speaker: string
+  portrait: string
+  text: string
+}[]>([])
+
+const [
+  storyDialogueIndex,
+  setStoryDialogueIndex
+] = useState(-1)
+
+const [
+  sleepSequence,
+  setSleepSequence
+] = useState<
+  "idle" |
+  "fadingOut" |
+  "dialogue" |
+  "sleeping" |
+  "fadingIn" |
+  "morning"
+>("idle")
+
 const audioRef =
   useRef<HTMLAudioElement>(null)
 
-
+const [
+  fadingToBlack,
+  setFadingToBlack
+] = useState(false)
 
 const [playing, setPlaying] =
   useState(false)
 
+// useEffect(() => {
 
+//   if (sleepSequence !== "dialogue") return
+
+//   if (storyDialogueIndex < 0) return
+
+//   const timer = setTimeout(() => {
+
+//     const next = storyDialogueIndex + 1
+
+//     if (next >= storyDialogue.length) {
+
+//       setStoryDialogueIndex(-1)
+//       setSleepSequence("sleeping")
+
+//       return
+
+//     }
+
+//     setStoryDialogueIndex(next)
+
+//   }, 2500)
+
+//   return () => clearTimeout(timer)
+
+// }, [
+//   sleepSequence,
+//   storyDialogue,
+//   storyDialogueIndex
+// ])
+
+useEffect(() => {
+
+  if (sleepSequence !== "sleeping") return
+
+  const timer = setTimeout(() => {
+
+    setSleepSequence("fadingIn")
+
+  }, 2000)
+
+  return () => clearTimeout(timer)
+
+}, [sleepSequence])
+
+useEffect(() => {
+
+  if (sleepSequence !== "fadingIn") return
+
+  const timer = setTimeout(() => {
+
+    setFadingToBlack(false)
+    setSleepSequence("morning")
+   
+    // unlock progression AFTER waking up
+    setMayorUnlocked(true)
+    setItemShopUnlocked(true)
+
+  }, 1500) // match your CSS fade duration
+
+  return () => clearTimeout(timer)
+
+}, [sleepSequence])
 
 function toggleAudio() {
 
@@ -100,6 +195,32 @@ function toggleAudio() {
     audio.pause()
     setPlaying(false)
   }
+}
+
+function fadeOutMusic() {
+
+  const audio = audioRef.current
+
+  if (!audio) return
+
+  const fade = setInterval(() => {
+
+    if (audio.volume > 0.05) {
+
+      audio.volume -= 0.05
+
+    } else {
+
+      audio.volume = 0
+
+      audio.pause()
+
+      clearInterval(fade)
+
+    }
+
+  }, 100)
+
 }
 
 const [activeLocation, setActiveLocation] =
@@ -149,6 +270,7 @@ background:
 
 
 const {
+party,
 itemShopUnlocked,
 mayorUnlocked,
 questBoardUnlocked,
@@ -504,11 +626,33 @@ Speak With InnKeeper
       className="speaktoinnkeeper"
       id="sleepingquarters"
 
-      onClick={() => {
+onClick={() => {
 
-        console.log("Sleeping Quarters")
+  // 1. close UI immediately
+  setActiveLocation(null)
 
-      }}
+  // 2. start fade
+  setSleepSequence("fadingOut")
+  setFadingToBlack(true)
+
+  fadeOutMusic()
+
+  // 3. delay transition INTO dream
+  setTimeout(() => {
+
+    // IMPORTANT: clear old dialogue first
+    setStoryDialogue([])
+    setStoryDialogueIndex(-1)
+
+    // NOW enter sleep scene
+    setStoryDialogue(createSleepDialogue(party))
+    setStoryDialogueIndex(0)
+
+    setSleepSequence("dialogue")
+
+  }, 2000)
+
+}}
 
     >
 
@@ -822,6 +966,65 @@ setInnDialogueIndex(next)
   )
 }
 
+{
+  storyDialogueIndex >= 0 &&
+  storyDialogueIndex < storyDialogue.length && (
+
+    <DialogueBox
+
+      speaker={
+        storyDialogue[
+          storyDialogueIndex
+        ].speaker
+      }
+
+      portrait={
+        storyDialogue[
+          storyDialogueIndex
+        ].portrait
+      }
+
+      text={
+        storyDialogue[
+          storyDialogueIndex
+        ].text
+      }
+onContinue={() => {
+
+  const next =
+    storyDialogueIndex + 1
+
+  if (
+    next >= storyDialogue.length
+  ) {
+
+    setStoryDialogueIndex(-1)
+
+    setSleepSequence("sleeping")
+
+  } else {
+
+    setStoryDialogueIndex(next)
+     
+
+  }
+
+}}
+
+    />
+
+  )
+}
+
+{fadingToBlack && (
+  <div
+    className={`fade-to-black ${
+      sleepSequence === "fadingIn"
+        ? "fade-in"
+        : "fade-out"
+    }`}
+  />
+)}
 
 </div>
 

@@ -302,6 +302,57 @@ h1 {
     top: 230px;
 }
 
+.fade-to-black {
+
+    position: fixed;
+
+    top:0;
+    left:0;
+
+    width:100vw;
+    height:100vh;
+   pointer-events: none;
+    background:black;
+    animation: fadeToBlack 3s forwards;
+    z-index:500;
+
+}
+
+.fade-out {
+    animation: fadeToBlack 3s forwards;
+}
+/* fade IN (black disappears) */
+.fade-in {
+    animation: fadeFromBlack 1.5s forwards;
+}
+
+@keyframes fadeToBlack{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeFromBlack {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 #quest-board {
     position: fixed;
     top: 520px;
@@ -349,7 +400,7 @@ h1 {
 }
 
 .town-modal {
-
+    z-index: 400;
     animation: townEnter .35s ease-out;
 
 }

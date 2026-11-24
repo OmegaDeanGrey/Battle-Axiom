@@ -12,8 +12,8 @@ export function createGoblin(): Unit {
 
     name: "Goblin",
     heroClass: "Goblin",
-    hp: 100,
-    maxHp: 100,
+    hp: 40,
+    maxHp: 40,
 
     attack: 15,
     defense: 15,
@@ -37,6 +37,9 @@ export function createGoblin(): Unit {
     team: "enemy",
 
     statuses: [],
+
+    description:
+      "A small, aggressive creature that attacks in noisy packs.",
 
     portrait: "goblinPortrait",
 

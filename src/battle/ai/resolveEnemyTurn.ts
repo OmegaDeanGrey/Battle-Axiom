@@ -3,6 +3,7 @@ import type { Unit } from "../models/unit"
 
 import { resolveAction } from "../engine/actionResolver"
 import { endTurn } from "../engine/battleEngine"
+import { checkVictory } from "../engine/checkVictory"
 
 export function resolveEnemyTurn(
   state: BattleState,
@@ -30,6 +31,8 @@ export function resolveEnemyTurn(
       targetId: target.id
     }
   )
+
+  checkVictory(state)
 
   endTurn(state)
 }

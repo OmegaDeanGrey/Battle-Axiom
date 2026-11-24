@@ -78,7 +78,7 @@ export default function AbilityBar({
 
           <div style={{ marginTop: 10 }}>
 
-            Select an enemy target
+            Select a target (healing abilities target allies)
 
           </div>
 

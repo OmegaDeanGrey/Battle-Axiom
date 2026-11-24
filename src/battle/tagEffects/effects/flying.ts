@@ -20,4 +20,4 @@ export const FlyingEffect = {
 
   ]
 
-}
+} as const

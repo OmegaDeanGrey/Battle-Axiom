@@ -1,6 +1,5 @@
 import type { Unit } from "../../models/unit"
-import priestPortrait
-from "../../../assets/heroes/Priest.png"
+import { createSkillTree } from "../../skills/createSkillTree"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createPriest(): Unit {
@@ -22,35 +21,11 @@ export function createPriest(): Unit {
           skillPoints: 0,
           abilities: [BasicAttack],
           passives: [],
-          skillTree: [
-            {
-              id: "venom_bite",
-              name: "Venom Bite",
-              description: "Adds poison damage",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "ability",
-                abilityId: "poison_strike"
-              }
-            },
-            {
-              id: "alpha_speed",
-              name: "Alpha Reflexes",
-              description: "+10 speed",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "stat",
-                stat: "speed",
-                value: 10
-              }
-            }
-          ],
+          skillTree: createSkillTree("Priest"),
           team: "player",
           statuses: [],
           description: "A guardian of sacred power who protects allies through healing, restoration, and divine energy. Priests follow paths shaped by how they choose to serve and influence the world around them.",
-          portrait: priestPortrait,
+          portrait: "/PriestImage.png",
           tags: ["Human", "Buff"]
         }
     }

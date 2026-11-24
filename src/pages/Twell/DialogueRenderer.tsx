@@ -11,7 +11,15 @@ interface Props {
   innPatron1: DialogueConfig
   innPatron2: DialogueConfig
   innKeeper: DialogueConfig
+  innMorning: DialogueConfig
   villager: DialogueConfig
+  twellSisters: DialogueConfig
+  sebastian: DialogueConfig
+  cleo: DialogueConfig
+  mayor: DialogueConfig
+  windmillMiller: DialogueConfig
+  windmillApprentice: DialogueConfig
+  windmillTraveler: DialogueConfig
   story: DialogueConfig
 }
 
@@ -35,7 +43,15 @@ export default function DialogueRenderer(props: Props) {
       {renderDialogue(props.innPatron1)}
       {renderDialogue(props.innPatron2)}
       {renderDialogue(props.innKeeper)}
+      {renderDialogue(props.innMorning)}
       {renderDialogue(props.villager)}
+      {renderDialogue(props.twellSisters)}
+      {renderDialogue(props.sebastian)}
+      {renderDialogue(props.cleo)}
+      {renderDialogue(props.mayor)}
+      {renderDialogue(props.windmillMiller)}
+      {renderDialogue(props.windmillApprentice)}
+      {renderDialogue(props.windmillTraveler)}
       {renderDialogue(props.story)}
     </>
   )

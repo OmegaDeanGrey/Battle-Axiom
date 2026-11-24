@@ -1,0 +1,121 @@
+.battle-inventory-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(7, 7, 9, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.battle-inventory-modal {
+  position: relative;
+  width: min(620px, 100%);
+  max-height: min(720px, 90vh);
+  overflow: auto;
+  padding: 28px;
+  border: 1px solid #b89145;
+  border-radius: 4px;
+  background:
+    linear-gradient(
+      rgba(20, 18, 18, 0.98),
+      rgba(11, 11, 13, 0.99)
+    );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.8),
+    0 18px 60px rgba(0, 0, 0, 0.65),
+    inset 0 0 30px rgba(184, 145, 69, 0.08);
+}
+
+.battle-inventory-modal::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(184, 145, 69, 0.28);
+  pointer-events: none;
+}
+
+.battle-inventory-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: 0;
+  background: transparent;
+  color: #d7c79f;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.battle-inventory-eyebrow {
+  color: #9f8b67;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.battle-inventory-modal h2 {
+  margin: 6px 0 20px;
+  color: #e5c472;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.battle-inventory-empty {
+  color: #aaa39a;
+  font-style: italic;
+}
+
+.battle-inventory-list {
+  display: grid;
+  gap: 12px;
+}
+
+.battle-inventory-item {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid rgba(184, 145, 69, 0.35);
+  border-radius: 3px;
+  background: rgba(33, 30, 28, 0.72);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.battle-inventory-item:hover:not(:disabled) {
+  border-color: #e5c472;
+  background: rgba(55, 47, 33, 0.78);
+}
+
+.battle-inventory-item__image {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
+}
+
+.battle-inventory-item__body {
+  display: grid;
+  gap: 4px;
+  flex: 1;
+}
+
+.battle-inventory-item__title {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #f0e0bb;
+}
+
+.battle-inventory-item__description,
+.battle-inventory-item__meta {
+  color: #b7afa3;
+  font-size: 13px;
+}
+
+.battle-inventory-item__meta {
+  color: #958a78;
+}

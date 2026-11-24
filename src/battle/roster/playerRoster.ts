@@ -1,9 +1,9 @@
-import { createWolf } from "../units/heroes/wolf"
+import { createRogue } from "../units/heroes/rogue"
 import { createKnight } from "../units/heroes/knight"
 import { createPriest } from "../units/heroes/priest"
 
 export const PlayerRoster = [
-  createWolf,
+  createRogue,
   createKnight,
   createPriest
 ]

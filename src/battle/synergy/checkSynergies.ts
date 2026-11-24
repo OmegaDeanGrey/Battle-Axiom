@@ -1,9 +1,10 @@
 import type { Unit } from "../models/unit"
+import type { HeroTag } from "../data/TagRegistry"
 
 export function countTag(
   units: Unit[],
   team: "player" | "enemy",
-  tag: string
+  tag: HeroTag
 ) {
   return units.filter(
     u =>

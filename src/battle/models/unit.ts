@@ -2,6 +2,7 @@ import type { Ability } from "./ability"
 import type { SkillNode } from "./skillNode"
 import type { StatusEffect } from "./statusEffect"
 import type { Passive } from "./passive"
+import type { HeroTag } from "../data/TagRegistry"
 
 export type UnitStatKey =
   | "hp"
@@ -45,7 +46,9 @@ export type Unit = {
 
   portrait: string
 
+  definitionId?: string
+
   isPlayer?: boolean
 
-  tags: string[]
+  tags: HeroTag[]
 }

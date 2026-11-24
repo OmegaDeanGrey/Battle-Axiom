@@ -1,6 +1,5 @@
 import type { Unit } from "../../models/unit"
-import elvenRangerPortrait
-from "../../../assets/heroes/ElvenArcher.png"
+import { createSkillTree } from "../../skills/createSkillTree"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createElvenRanger(): Unit {
@@ -22,35 +21,11 @@ export function createElvenRanger(): Unit {
           skillPoints: 0,
           abilities: [BasicAttack],
           passives: [],
-          skillTree: [
-            {
-              id: "venom_bite",
-              name: "Venom Bite",
-              description: "Adds poison damage",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "ability",
-                abilityId: "poison_strike"
-              }
-            },
-            {
-              id: "alpha_speed",
-              name: "Alpha Reflexes",
-              description: "+10 speed",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "stat",
-                stat: "speed",
-                value: 10
-              }
-            }
-          ],
+          skillTree: createSkillTree("Elven Ranger"),
           team: "player",
           statuses: [],
           description: "A master of the wilds who combines unmatched precision with a deep connection to nature. Elven Rangers strike enemies from afar while adapting to the flow of battle.",
-          portrait: elvenRangerPortrait,
+          portrait: "/ElvenRangerImage.png",
           tags: ["Nature", "Ranged"]
         }
     }

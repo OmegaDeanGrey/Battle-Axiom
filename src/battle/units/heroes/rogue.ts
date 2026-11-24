@@ -1,6 +1,5 @@
 import type { Unit } from "../../models/unit"
-import roguePortrait
-from "../../../assets/heroes/Rogue.png"
+import { createSkillTree } from "../../skills/createSkillTree"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createRogue(): Unit {
@@ -22,35 +21,11 @@ export function createRogue(): Unit {
           skillPoints: 0,
           abilities: [BasicAttack],
           passives: [],
-          skillTree: [
-            {
-              id: "venom_bite",
-              name: "Venom Bite",
-              description: "Adds poison damage",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "ability",
-                abilityId: "poison_strike"
-              }
-            },
-            {
-              id: "alpha_speed",
-              name: "Alpha Reflexes",
-              description: "+10 speed",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "stat",
-                stat: "speed",
-                value: 10
-              }
-            }
-          ],
+          skillTree: createSkillTree("Rogue"),
           team: "player",
           statuses: [],
           description: "A clever and adaptable fighter who relies on speed, precision, and opportunity. Rogues learn to exploit weaknesses and can develop into masters of stealth, deception, or deadly combat techniques.",
-          portrait: roguePortrait,
+          portrait: "/RogueImage.png",
           tags: ["Human", "Ranged"]
         }
     }

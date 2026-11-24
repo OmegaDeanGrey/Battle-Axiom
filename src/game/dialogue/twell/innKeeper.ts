@@ -56,3 +56,11 @@ export const innDialogue = [
   }
 
 ]
+
+export const innMorningGreeting = [
+  {
+    speaker: "InnKeeper",
+    portrait: "/TwellInnkeeper.png",
+    text: "Good morning...the Mayor sends word he wants to speak with ye",
+  },
+]

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243b55"/>
+      <stop offset="0.45" stop-color="#6a6a78"/>
+      <stop offset="0.78" stop-color="#c99470"/>
+      <stop offset="1" stop-color="#e3b985"/>
+    </linearGradient>
+    <linearGradient id="farHills" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5c6f66"/>
+      <stop offset="1" stop-color="#33473f"/>
+    </linearGradient>
+    <linearGradient id="nearHills" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#415342"/>
+      <stop offset="1" stop-color="#1d2a20"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.7" cy="0.7" r="0.5">
+      <stop offset="0" stop-color="#ffd9a0" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="700" fill="url(#sky)"/>
+  <circle cx="1130" cy="410" r="330" fill="url(#glow)"/>
+  <path d="M0 430 L170 330 L320 405 L500 290 L690 420 L860 320 L1040 415 L1220 300 L1410 410 L1600 340 L1600 700 L0 700 Z" fill="url(#farHills)" opacity="0.85"/>
+  <path d="M0 500 L210 430 L390 495 L600 405 L820 505 L1010 430 L1230 510 L1430 440 L1600 500 L1600 700 L0 700 Z" fill="url(#nearHills)"/>
+  <g fill="#18251c" opacity="0.9">
+    <path d="M120 520 l22 -78 l24 78 z M104 496 l38 -54 l36 54 z"/>
+    <path d="M1370 530 l26 -92 l28 92 z M1350 500 l46 -64 l46 64 z"/>
+    <path d="M1500 545 l18 -70 l20 70 z"/>
+  </g>
+  <path d="M0 560 Q400 520 800 565 T1600 555 L1600 700 L0 700 Z" fill="#2a2b20"/>
+  <path d="M0 610 Q500 570 980 615 T1600 600 L1600 700 L0 700 Z" fill="#3a3526" opacity="0.8"/>
+</svg>

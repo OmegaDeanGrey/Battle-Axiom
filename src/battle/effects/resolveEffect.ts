@@ -1,6 +1,11 @@
 import type { BattleState } from "../engine/battleEngine"
 import type { AbilityEffect } from "../models/ability"
 import type { Unit } from "../models/unit"
+import {
+  applyDamage,
+  applyHealing
+} from "../models/hp"
+import { recordCombatEvent } from "../events/combatEvents"
 
 export function resolveEffect(
   state: BattleState,
@@ -57,7 +62,7 @@ let damage =
     Math.floor(damage)
   )
 
-  target.hp -= damage
+  applyDamage(target, damage)
 
   state.log.push(
     isCrit
@@ -65,10 +70,54 @@ let damage =
       : `${target.name} takes ${damage} damage`
   )
 
+  recordCombatEvent(state, {
+    type: "damage",
+    actorId: source.id,
+    targetId: target.id,
+    amount: damage,
+    critical: isCrit
+  })
+
+  if (target.hp <= 0) {
+    recordCombatEvent(state, {
+      type: "defeat",
+      unitId: target.id
+    })
+  }
+
   break
 }
 
-   case "applyStatus": {
+    case "heal": {
+      const missing =
+        target.maxHp - target.hp
+
+      const healed =
+        Math.max(
+          0,
+          Math.min(
+            effect.amount,
+            missing
+          )
+        )
+
+      applyHealing(target, healed)
+
+      state.log.push(
+        `${target.name} recovers ${healed} HP`
+      )
+
+      recordCombatEvent(state, {
+        type: "heal",
+        actorId: source.id,
+        targetId: target.id,
+        amount: healed
+      })
+
+      break
+    }
+
+    case "applyStatus": {
   const existing = target.statuses.find(
     s => s.id === effect.status.id
   )
@@ -86,7 +135,43 @@ let damage =
     )
   }
 
+  recordCombatEvent(state, {
+    type: "status-applied",
+    actorId: source.id,
+    targetId: target.id,
+    statusId: effect.status.id,
+    statusName: effect.status.name
+  })
+
   break
 }
+
+    case "removeStatus": {
+      const existing = target.statuses.find(
+        status => status.id === effect.statusId
+      )
+
+      if (existing) {
+        target.statuses =
+          target.statuses.filter(
+            status =>
+              status.id !== effect.statusId
+          )
+
+        state.log.push(
+          `${target.name} is no longer affected by ${existing.name}`
+        )
+
+        recordCombatEvent(state, {
+          type: "status-removed",
+          actorId: source.id,
+          targetId: target.id,
+          statusId: existing.id,
+          statusName: existing.name
+        })
+      }
+
+      break
+    }
   }
 }

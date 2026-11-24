@@ -1,0 +1,82 @@
+.twell-button {
+    height: 40px;
+    width:190px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(240, 248, 255, 0.425);
+    border: 2px white solid;
+    border-radius: 5px;
+    text-shadow: 1px 1px white;
+    box-shadow: 4px 4px 12px black;
+    transition: transform 1s, background-color 2s;
+}
+
+.twell-button:hover {
+    transform: scale(1.1);
+    background-color: rgba(240, 248, 255, 0.614);
+}
+
+#exittwellbutton{
+    position: fixed;
+    bottom: 30px;
+    left: 900px;
+    color: rgb(26, 26, 26);
+    text-shadow: 2px 2px rgb(220, 216, 216);
+}
+
+#playbuttontwell {
+    position: fixed;
+    top: 130px;
+    right: 485px;
+    color: #ffffff00;
+    background-color: #f7f7d819;
+}
+
+#twell-sisters {
+    position: fixed;
+    bottom: 410px;
+    right: 763px;
+  
+}
+
+#windmill-row {
+    position: fixed;
+    top: 200px;
+    left: 570px;
+}
+
+#mayor {
+    position: fixed;
+    top: 340px;
+    left: 790px;
+}
+
+#inn {
+    position: fixed;
+    top: 320px;
+    left: 220px;
+}
+
+#quest-board {
+    position: fixed;
+    top: 520px;
+    right: 590px;
+}
+
+#item-shop {
+    position: fixed;
+    bottom: 500px;
+    left: 550px;
+}
+
+#weapon-shop {
+    position: fixed;
+    bottom: 420px;
+    right: 300px;
+}
+
+#villager1 {
+    left: 733px;
+    bottom: 270px;
+}

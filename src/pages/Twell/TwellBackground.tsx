@@ -1,3 +1,5 @@
+import "./TwellBackground.css"
+
 export default function TwellBackground() {
   return (
     <>

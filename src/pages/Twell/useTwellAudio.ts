@@ -30,5 +30,21 @@ export function useTwellAudio() {
     }, 100)
   }
 
-  return { audioRef, playing, toggleAudio, fadeOutMusic }
+  function fadeInMusic() {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.volume = 0
+    audio.play()
+    setPlaying(true)
+    const fade = setInterval(() => {
+      if (audio.volume < 0.95) {
+        audio.volume += 0.05
+      } else {
+        audio.volume = 1
+        clearInterval(fade)
+      }
+    }, 100)
+  }
+
+  return { audioRef, playing, toggleAudio, fadeOutMusic, fadeInMusic }
 }

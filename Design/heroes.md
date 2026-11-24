@@ -45,3 +45,6 @@ accuracy
 evasion
 blockChance
 armorPenetration
+
+Level growth
+Provisional per-level stat deltas live in `src/battle/progression/heroGrowth.ts`, not in hero factories. Combat stats grow by class each time `grantXp` reports a gained level; XP itself only changes level, XP, and skill points. See `Design/battle.md` for the current table.

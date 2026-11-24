@@ -1,6 +1,5 @@
 import type { Unit } from "../../models/unit"
-import fairyPortrait
-from "../../../assets/heroes/Fairy.png"
+import { createSkillTree } from "../../skills/createSkillTree"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createFairy(): Unit {
@@ -22,35 +21,11 @@ export function createFairy(): Unit {
           skillPoints: 0,
           abilities: [BasicAttack],
           passives: [],
-          skillTree: [
-            {
-              id: "venom_bite",
-              name: "Venom Bite",
-              description: "Adds poison damage",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "ability",
-                abilityId: "poison_strike"
-              }
-            },
-            {
-              id: "alpha_speed",
-              name: "Alpha Reflexes",
-              description: "+10 speed",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "stat",
-                stat: "speed",
-                value: 10
-              }
-            }
-          ],
+          skillTree: createSkillTree("Fairy"),
           team: "player",
           statuses: [],
           description: "A magical being connected to the forces of nature and restoration. Fairies combine healing, growth, and mystical power, with their evolution shaped by the balance between nurturing life and wielding magic.",
-          portrait: fairyPortrait,
+          portrait: "/FairyImage.png",
           tags: ["Nature", "Buff", "Flying"]
         }
     }

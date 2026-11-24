@@ -1,0 +1,49 @@
+.environmental-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.environmental-hotspot {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+    border: 2px solid rgba(255, 215, 0, 0.85);
+    border-radius: 999px;
+    background: rgba(12, 8, 18, 0.45);
+    box-shadow:
+        0 0 18px rgba(255, 215, 0, 0.35),
+        inset 0 0 12px rgba(255, 215, 0, 0.18);
+    color: #fff7d6;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 0.72;
+    transition: opacity 180ms ease, transform 180ms ease,
+        background-color 180ms ease;
+}
+
+.environmental-hotspot:hover,
+.environmental-hotspot:focus-visible {
+    opacity: 1;
+    transform: scale(1.04);
+    background: rgba(38, 24, 48, 0.78);
+    outline: none;
+}
+
+.environmental-hotspot__mark {
+    color: #ffd700;
+    font-size: 16px;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
+}
+
+.environmental-hotspot__label {
+    white-space: nowrap;
+    text-shadow: 1px 1px 3px #000;
+}

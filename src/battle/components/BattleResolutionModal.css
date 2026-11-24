@@ -1,0 +1,224 @@
+.battle-resolution-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(3, 3, 5, 0.84);
+  backdrop-filter: blur(3px);
+}
+
+.battle-resolution-modal {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: min(900px, 92vh);
+  overflow: auto;
+  padding: 30px;
+  border: 1px solid #b89145;
+  border-radius: 4px;
+  background:
+    linear-gradient(
+      rgba(20, 18, 17, 0.98),
+      rgba(10, 9, 10, 0.99)
+    );
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.88),
+    0 20px 70px rgba(0, 0, 0, 0.7),
+    inset 0 0 34px rgba(184, 145, 69, 0.08);
+}
+
+.battle-resolution-modal::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(184, 145, 69, 0.28);
+  pointer-events: none;
+}
+
+.battle-resolution-eyebrow {
+  color: #9f8b67;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.battle-resolution-title {
+  margin: 4px 0 6px;
+  color: #e8c66f;
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.battle-resolution-subtitle {
+  color: #d9cbb0;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+.battle-resolution-conclusion {
+  margin: 16px 0 24px;
+  max-width: 70ch;
+  color: #b7afa3;
+  line-height: 1.6;
+}
+
+.battle-resolution-section {
+  margin-top: 24px;
+}
+
+.battle-resolution-section h3 {
+  margin: 0 0 12px;
+  color: #d7c79f;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.battle-resolution-heroes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.battle-resolution-hero {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(184, 145, 69, 0.35);
+  background: rgba(32, 29, 27, 0.68);
+}
+
+.battle-resolution-hero__portrait {
+  width: 80px;
+  height: 80px;
+  flex: 0 0 80px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid rgba(184, 145, 69, 0.5);
+}
+
+.battle-resolution-hero__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.battle-resolution-hero__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.battle-resolution-hero__name {
+  color: #f0e0bb;
+  font-size: 18px;
+}
+
+.battle-resolution-hero__class,
+.battle-resolution-hero__state,
+.battle-resolution-hero__hp,
+.battle-resolution-hero__meta,
+.battle-resolution-item__rarity {
+  color: #a99f90;
+  font-size: 13px;
+}
+
+.battle-resolution-hero__state {
+  color: #d9cbb0;
+}
+
+.battle-resolution-hpbar,
+.battle-resolution-xpbar {
+  width: 100%;
+  height: 8px;
+  margin: 6px 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(184, 145, 69, 0.2);
+}
+
+.battle-resolution-hpbar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8f2d2d, #d66a5d);
+}
+
+.battle-resolution-xpbar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6f5a1d, #d8b44f);
+}
+
+.battle-resolution-hero__xp {
+  margin-top: 8px;
+  color: #e7d7b2;
+}
+
+.battle-resolution-hero__notice {
+  margin-top: 8px;
+  color: #f2d98a;
+  letter-spacing: 0.04em;
+}
+
+.battle-resolution-gold {
+  padding: 14px;
+  border: 1px solid rgba(184, 145, 69, 0.35);
+  background: rgba(32, 29, 27, 0.68);
+  color: #f0e0bb;
+}
+
+.battle-resolution-items {
+  display: grid;
+  gap: 10px;
+}
+
+.battle-resolution-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(184, 145, 69, 0.35);
+  background: rgba(32, 29, 27, 0.68);
+}
+
+.battle-resolution-item__image {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.battle-resolution-item__body {
+  flex: 1;
+}
+
+.battle-resolution-item__name {
+  color: #f0e0bb;
+}
+
+.battle-resolution-item__qty {
+  color: #e5c472;
+}
+
+.battle-resolution-empty {
+  color: #aaa39a;
+  font-style: italic;
+}
+
+.battle-resolution-actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 720px) {
+  .battle-resolution-modal {
+    padding: 20px;
+  }
+
+  .battle-resolution-title {
+    font-size: 32px;
+  }
+
+  .battle-resolution-hero {
+    flex-direction: column;
+  }
+}

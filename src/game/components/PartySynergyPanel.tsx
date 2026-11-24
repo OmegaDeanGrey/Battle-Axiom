@@ -1,11 +1,7 @@
 import type { Unit } from "../../battle/models/unit"
 // import { ComboRegistry } from "../data/ComboRegistry"
 import {
-  RelationshipRegistry
-}
-from "../../battle/relationships/relationshipRegistry"
-import {
- getActiveSynergies
+  getActiveSynergies
 }
 from "../../battle/synergy/getActiveSynergies"
 import {
@@ -34,21 +30,6 @@ export default function PartySynergyPanel({
   const partyEffects =
   party.flatMap(hero =>
     getTagEffects(hero)
-  )
-
-  const partyClasses =
-  party.map(
-    hero => hero.heroClass
-  )
-
-  const activeRelationships =
-  RelationshipRegistry.filter(
-    rel =>
-
-      rel.members.every(
-        member =>
-          partyClasses.includes(member)
-      )
   )
 
   // const unlockedCombos =
@@ -181,27 +162,6 @@ export default function PartySynergyPanel({
   )
 } */}
 
-<h3>
-  Relationships
-</h3>
-
-{
-  activeRelationships.map(
-    rel => (
-
-      <div
-        key={rel.id}
-      >
-
-        <strong>
-          {rel.name}
-        </strong>
-
-      </div>
-
-    )
-  )
-}
       {
         Object.entries(tagCounts)
           .map(([tag, count]) => (

@@ -1,9 +1,12 @@
+import "./TownLocationButtons.css"
+
 import type { Location } from "./LocationModal"
 
 interface Props {
   onLocationClick: (location: Location) => void
   onExit: () => void
   onVillagerClick: () => void
+  onTwellSistersClick: () => void
   windmillRowUnlocked: boolean
   mayorUnlocked: boolean
   questBoardUnlocked: boolean
@@ -17,6 +20,7 @@ export default function TownLocationButtons({
   onLocationClick,
   onExit,
   onVillagerClick,
+  onTwellSistersClick,
   windmillRowUnlocked,
   mayorUnlocked,
   questBoardUnlocked,
@@ -79,6 +83,13 @@ export default function TownLocationButtons({
         id="villager1"
         className="npc-marker"
         onClick={onVillagerClick}
+      >
+        ▼
+      </button>
+      <button
+        id="twell-sisters"
+        className="npc-marker"
+        onClick={onTwellSistersClick}
       >
         ▼
       </button>

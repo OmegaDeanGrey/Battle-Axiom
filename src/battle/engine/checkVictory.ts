@@ -1,9 +1,11 @@
 import type { BattleState } from "./battleEngine"
-import { grantXp } from "../progression/grantXp"
+import { recordCombatEvent } from "../events/combatEvents"
 
 export function checkVictory(
   state: BattleState
 ) {
+
+  if (state.winner) return
 
   const livingPlayers = state.units.filter(
     u =>
@@ -23,6 +25,11 @@ export function checkVictory(
     state.log.push(
       "Enemies are victorious!"
     )
+
+    recordCombatEvent(state, {
+      type: "victory",
+      winner: "enemy"
+    })
   }
 
   if (livingEnemies.length === 0) {
@@ -31,14 +38,10 @@ export function checkVictory(
     state.log.push(
       "Players are victorious!"
     )
-    for (const unit of state.units) {
 
-  if (
-    unit.team === "player" &&
-    unit.hp > 0
-  ) {
-    grantXp(unit, 50)
-  }
-}
+    recordCombatEvent(state, {
+      type: "victory",
+      winner: "player"
+    })
   }
 }

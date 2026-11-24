@@ -8,5 +8,13 @@ export type Action =
     }
 
   | {
+      type: "item"
+
+      itemId: string
+
+      targetId: string
+    }
+
+  | {
       type: "wait"
     }

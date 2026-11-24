@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test": "node node_modules/rolldown/bin/cli.mjs src/battle/test/encounters.test.ts --file node_modules/.tmp/encounter-tests.mjs --platform node --format esm && node node_modules/rolldown/bin/cli.mjs src/battle/test/turnSystem.test.ts --file node_modules/.tmp/turn-system-tests.mjs --platform node --format esm && node node_modules/rolldown/bin/cli.mjs src/battle/test/economy.test.ts --file node_modules/.tmp/economy-tests.mjs --platform node --format esm && node node_modules/rolldown/bin/cli.mjs src/battle/test/progression.test.ts --file node_modules/.tmp/progression-tests.mjs --platform node --format esm && node node_modules/rolldown/bin/cli.mjs src/battle/test/environment.test.ts --file node_modules/.tmp/environment-tests.mjs --platform node --format esm && node --test \"$PWD/node_modules/.tmp/encounter-tests.mjs\" \"$PWD/node_modules/.tmp/turn-system-tests.mjs\" \"$PWD/node_modules/.tmp/economy-tests.mjs\" \"$PWD/node_modules/.tmp/progression-tests.mjs\" \"$PWD/node_modules/.tmp/environment-tests.mjs\"",
     "preview": "vite preview"
   },
   "dependencies": {

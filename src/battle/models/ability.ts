@@ -19,6 +19,11 @@ export type AbilityEffect =
       amount: number
     }
 
+  | {
+      type: "removeStatus"
+      statusId: string
+    }
+
 export type Ability = {
   id: string
   name: string

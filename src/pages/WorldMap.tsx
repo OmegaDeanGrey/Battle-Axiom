@@ -8,10 +8,15 @@ import "../pages/WorldMap.css"
 import { useNavigate }
 from "react-router-dom"
 
+import { useGame }
+from "../game/context/GameContext"
+
 export default function WorldMap() {
 
   const navigate =
     useNavigate()
+
+  const { townOutskirtsUnlocked } = useGame()
 
   const audioRef =
     useRef<HTMLAudioElement>(null)
@@ -19,6 +24,10 @@ export default function WorldMap() {
   const [playing, setPlaying] =
     useState(false)
 
+
+  function handleTwellOutskirtsEnter() {
+    navigate("/battle/twell-outskirts")
+  }
 
   function toggleAudio() {
 
@@ -99,6 +108,16 @@ export default function WorldMap() {
       >
        Twell
       </button>
+
+      {townOutskirtsUnlocked && (
+        <button
+          id="TwellOutskirtsButton"
+          className="WMButtons"
+          onClick={handleTwellOutskirtsEnter}
+        >
+          Twell Outskirts
+        </button>
+      )}
 
       {/*
       <button

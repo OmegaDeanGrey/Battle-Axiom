@@ -12,14 +12,22 @@ export type SleepSequence =
 
 export function useTwellDialogue(party: Unit[], onWakeUp: () => void) {
   const onWakeUpRef = useRef(onWakeUp)
-  onWakeUpRef.current = onWakeUp
+
+  useEffect(() => {
+    onWakeUpRef.current = onWakeUp
+  }, [onWakeUp])
 
   const [gateDialogueIndex, setGateDialogueIndex] = useState(0)
   const [innPatron1DialogueIndex, setInnPatron1DialogueIndex] = useState(-1)
   const [innPatron2DialogueIndex, setInnPatron2DialogueIndex] = useState(-1)
   const [innDialogueIndex, setInnDialogueIndex] = useState(-1)
   const [villagerDialogueIndex, setVillagerDialogueIndex] = useState(-1)
-
+  const [twellSistersDialogueIndex, setTwellSistersDialogueIndex] = useState(-1)
+  const [sebastianDialogueIndex, setSebastianDialogueIndex] = useState(-1)
+  const [windmillMillerDialogueIndex, setWindmillMillerDialogueIndex] = useState(-1)
+  const [windmillApprenticeDialogueIndex, setWindmillApprenticeDialogueIndex] = useState(-1)
+  const [windmillTravelerDialogueIndex, setWindmillTravelerDialogueIndex] = useState(-1)
+  const [shopMenuOpen, setShopMenuOpen] = useState(false)
   const [storyDialogue, setStoryDialogue] = useState<
     { speaker: string; portrait: string; text: string }[]
   >([])
@@ -27,6 +35,18 @@ export function useTwellDialogue(party: Unit[], onWakeUp: () => void) {
 
   const [sleepSequence, setSleepSequence] = useState<SleepSequence>("idle")
   const [fadingToBlack, setFadingToBlack] = useState(false)
+
+  useEffect(() => {
+    if (sleepSequence !== "dialogue") return
+    if (storyDialogueIndex >= 0) return
+
+    const timer = setTimeout(
+      () => setSleepSequence("sleeping"),
+      0
+    )
+
+    return () => clearTimeout(timer)
+  }, [sleepSequence, storyDialogueIndex])
 
   useEffect(() => {
     if (sleepSequence !== "sleeping") return
@@ -69,6 +89,18 @@ export function useTwellDialogue(party: Unit[], onWakeUp: () => void) {
     setInnDialogueIndex,
     villagerDialogueIndex,
     setVillagerDialogueIndex,
+    twellSistersDialogueIndex,
+    setTwellSistersDialogueIndex,
+    sebastianDialogueIndex,
+    setSebastianDialogueIndex,
+    windmillMillerDialogueIndex,
+    setWindmillMillerDialogueIndex,
+    windmillApprenticeDialogueIndex,
+    setWindmillApprenticeDialogueIndex,
+    windmillTravelerDialogueIndex,
+    setWindmillTravelerDialogueIndex,
+    shopMenuOpen,
+    setShopMenuOpen,
     storyDialogue,
     storyDialogueIndex,
     setStoryDialogueIndex,

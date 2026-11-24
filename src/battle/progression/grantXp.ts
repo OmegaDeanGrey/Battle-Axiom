@@ -1,26 +1,33 @@
 import type { Unit } from "../models/unit"
 
+export function getXpToNextLevel(
+  level: number
+) {
+  return level * 100
+}
+
 export function grantXp(
   unit: Unit,
   amount: number
-) {
+): number {
 
   unit.xp += amount
 
-  const xpNeeded =
-    unit.level * 100
+  let levelsGained = 0
 
-  if (unit.xp >= xpNeeded) {
-
-    unit.xp -= xpNeeded
+  while (
+    unit.xp >=
+    getXpToNextLevel(unit.level)
+  ) {
+    unit.xp -=
+      getXpToNextLevel(unit.level)
 
     unit.level += 1
 
     unit.skillPoints += 1
 
-    unit.maxHp += 10
-    unit.hp = unit.maxHp
-
-    unit.speed += 2
+    levelsGained += 1
   }
+
+  return levelsGained
 }

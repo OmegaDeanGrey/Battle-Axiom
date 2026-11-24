@@ -1,6 +1,5 @@
 import type { Unit } from "../../models/unit"
-import witchPortrait
-from "../../../assets/heroes/Witch.png"
+import { createSkillTree } from "../../skills/createSkillTree"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createWitch(): Unit {
@@ -22,35 +21,11 @@ export function createWitch(): Unit {
           skillPoints: 0,
           abilities: [BasicAttack],
           passives: [],
-          skillTree: [
-            {
-              id: "venom_bite",
-              name: "Venom Bite",
-              description: "Adds poison damage",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "ability",
-                abilityId: "poison_strike"
-              }
-            },
-            {
-              id: "alpha_speed",
-              name: "Alpha Reflexes",
-              description: "+10 speed",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "stat",
-                stat: "speed",
-                value: 10
-              }
-            }
-          ],
+          skillTree: createSkillTree("Witch"),
           team: "player",
           statuses: [],
           description: "A practitioner of mysterious and unconventional magic who explores powers others fear to understand. Witches grow through knowledge of curses, spirits, and hidden forces, shaping their own approach to magic.",
-          portrait: witchPortrait,
+          portrait: "/WitchImage.png",
           tags: ["Arcane", "Buff"]
         }
     }

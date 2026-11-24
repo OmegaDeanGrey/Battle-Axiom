@@ -1,6 +1,5 @@
 import type { Unit } from "../../models/unit"
-import summonerPortrait
-from "../../../assets/heroes/Summoner.png"
+import { createSkillTree } from "../../skills/createSkillTree"
 import { BasicAttack } from "../../abilities/basicAttack"
 
 export function createSummoner(): Unit {
@@ -22,35 +21,11 @@ export function createSummoner(): Unit {
           skillPoints: 0,
           abilities: [BasicAttack],
           passives: [],
-          skillTree: [
-            {
-              id: "venom_bite",
-              name: "Venom Bite",
-              description: "Adds poison damage",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "ability",
-                abilityId: "poison_strike"
-              }
-            },
-            {
-              id: "alpha_speed",
-              name: "Alpha Reflexes",
-              description: "+10 speed",
-              cost: 1,
-              unlocked: false,
-              effect: {
-                type: "stat",
-                stat: "speed",
-                value: 10
-              }
-            }
-          ],
+          skillTree: createSkillTree("Summoner"),
           team: "player",
           statuses: [],
           description: "A wielder of ancient knowledge who calls upon creatures and forces beyond themselves. Summoners grow by discovering new entities to command and new ways to shape the battlefield.",
-          portrait: summonerPortrait,
+          portrait: "/SummonerImage.png",
           tags: ["Arcane", "Melee"]
         }
     }

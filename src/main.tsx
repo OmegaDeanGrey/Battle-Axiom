@@ -4,7 +4,7 @@ import App from './App.tsx'
 import { GameProvider } from './game/context/GameContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
-    <GameProvider>,
-    <App />,
-    </GameProvider>
+  <GameProvider>
+    <App />
+  </GameProvider>,
 )

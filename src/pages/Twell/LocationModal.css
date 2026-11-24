@@ -1,0 +1,1033 @@
+.close-button {
+    color: aliceblue;
+    font-weight: bold;
+    border: 3px  rgba(240, 248, 255, 0.648) solid;
+    background-color: rgba(0, 0, 0, 0.485);
+    border-radius: 50px;
+    transition: transform 2s, background-color 2s;
+    position: fixed;
+    top: 200px;
+    left: 470px;
+}
+
+.close-button:hover {
+    transform: scale(1.2);
+    background-color: rgba(255, 0, 0, 0.679);
+}
+h1 {
+    color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px black;
+}
+
+#windmill-row-modal {
+  position: relative;
+
+  width: 1100px;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  border: 10px double gold;
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 120px rgba(0, 0, 0, 0.25);
+}
+
+.windmill-close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 30;
+
+  width: 42px;
+  height: 42px;
+
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid gold;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.windmill-close-button:hover {
+  background: rgba(160, 20, 20, 0.8);
+}
+
+#windmill-row-modal #windmill-miller-marker {
+  top: 51%;
+  left: 44%;
+}
+
+#windmill-row-modal #windmill-apprentice-marker {
+  top: 51%;
+  left: 22%;
+}
+
+#windmill-row-modal #windmill-traveler-marker {
+  top: 54%;
+  right: 19%;
+}
+
+.tavern-entrance {
+  position: absolute;
+  top: 44%;
+  left: 9%;
+  transform: translateX(-50%);
+
+  padding: 10px 22px;
+
+  color: #f6eeee;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px black;
+
+  background: rgba(20, 15, 10, 0.92);
+  border: 2px solid gold;
+  border-radius: 10px;
+
+  cursor: pointer;
+  z-index: 25;
+}
+
+.tavern-entrance:hover {
+  background: #4a3520;
+}
+
+.tavern-bubble {
+  position: absolute;
+  bottom: 50%;
+  left: 20%;
+  transform: translateX(-50%);
+
+  max-width: 460px;
+  padding: 18px 24px;
+
+  background: rgba(250, 245, 230, 0.96);
+  border: 3px double #8b6a2f;
+  border-radius: 16px;
+
+  color: #2b2118;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  text-align: center;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+
+  cursor: pointer;
+  z-index: 40;
+
+  animation: tavernBubbleFade .4s ease-in 2s forwards;
+}
+
+.tavern-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-width: 14px 14px 0;
+  border-style: solid;
+  border-color: rgba(250, 245, 230, 0.96) transparent transparent transparent;
+}
+
+.tavern-bubble p {
+  margin: 0;
+}
+
+@keyframes tavernBubbleFade {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.windmill-exit-button {
+  position: absolute;
+  top: 37%;
+  right: 32%;
+
+  padding: 10px 20px;
+
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-weight: bold;
+
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid gold;
+  border-radius: 8px;
+
+  cursor: pointer;
+  z-index: 25;
+}
+
+.windmill-exit-button:hover {
+  background: rgba(160, 20, 20, 0.8);
+}
+
+#mayors-office {
+        position: relative;
+   
+    width: 1100px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border: 10px double gold;
+    border-radius: 18px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow:
+        0 0 30px rgba(0,0,0,.7),
+        inset 0 0 120px rgba(0,0,0,.25);
+}
+
+#mayor-marker {
+  position: absolute;
+  top: 20%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+#twellinn {
+    position: relative;
+   
+    width: 1100px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border: 10px double gold;
+    border-radius: 18px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow:
+        0 0 30px rgba(0,0,0,.7),
+        inset 0 0 120px rgba(0,0,0,.25);
+}
+
+.speaktoinnkeeper{
+    color: rgba(246, 238, 238, 0.79);
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 9px black;
+    background-color: rgba(0, 0, 0, 0.24);
+    border: 2px rgba(240, 248, 255, 0.721) solid;
+    border-radius: 15px;
+    padding: 9px;
+    position: fixed;
+    right: 550px;
+    top: 395px;
+    transition: transform 2s, background-color 3s;
+}
+
+.speaktoinnkeeper:hover{
+    transform: scale(1.2);
+    background-color: rgba(240, 248, 255, 0.256);
+}
+
+#innpatron1 {
+    position: fixed;
+    left: 670px;
+    bottom: 515px;
+}
+
+#innpatron2 {
+    position: fixed;
+    right: 857px;
+    bottom: 555px;
+}
+
+#sleepingquarters {
+    right: 880px;
+    top: 230px;
+}
+
+.sleep-prompt-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 600;
+    border-radius: 18px;
+}
+
+.sleep-prompt {
+    background: rgba(20, 15, 10, 0.95);
+    border: 3px solid gold;
+    border-radius: 16px;
+    padding: 32px 48px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.sleep-prompt p {
+    color: #f0e6d2;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    margin-bottom: 24px;
+    text-shadow: 1px 1px 4px black;
+}
+
+.sleep-prompt-buttons {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.sleep-prompt-buttons .speaktoinnkeeper {
+    position: static;
+    font-size: 16px;
+    padding: 10px 32px;
+}
+
+.speaktoitemclerk{
+    color: rgba(246, 238, 238, 0.79);
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-shadow: 2px 2px 9px black;
+    background-color: rgba(0, 0, 0, 0.24);
+    border: 2px rgba(240, 248, 255, 0.721) solid;
+    border-radius: 15px;
+    padding: 9px;
+    position: fixed;
+    right: 782px;
+    top: 300px;
+    transition: transform 2s, background-color 3s;
+}
+
+.speaktoitemclerk:hover{
+    transform: scale(1.2);
+    background-color: rgba(240, 248, 255, 0.256);
+}
+
+#ItemShopInterior {
+        position: relative;
+   
+    width: 1100px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    border: 10px double gold;
+    border-radius: 18px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow:
+        0 0 30px rgba(0,0,0,.7),
+        inset 0 0 120px rgba(0,0,0,.25);
+}
+
+.shop-item {
+    height: 60px;
+    width: 60px;
+    border: 3px white double;
+    border-radius: 50px;
+    background-color: rgba(251, 249, 249, 0.077);
+    color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 9px;
+    text-shadow: 1px 2px rgb(0, 0, 0);
+    box-shadow: 4px 4px 9px black, 3px 3px grey inset;
+    transition: transform 2s, background-color 3s;
+}
+.shop-item:hover {
+    background-color: #ffffff49;
+    transform: scale(1.2);
+}
+#twell-potion {
+    position: fixed;
+    top: 299px;
+    left: 684px;
+}
+#twell-hi-potion {
+    position: fixed;
+    top: 479px;
+    left: 544px;
+}
+#twell-antidote {
+    position: fixed;
+    top: 479px;
+    right: 544px;
+}
+
+.shop-left-panel {
+    position: fixed;
+    left: 30px;
+    top: 120px;
+
+    width: 260px;
+    min-height: 360px;
+
+    padding: 20px;
+
+    background: rgba(10, 10, 20, .92);
+
+    border: 3px double gold;
+    border-radius: 12px;
+
+    color: white;
+
+    z-index: 700;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    box-shadow: 0 0 20px black;
+}
+
+.shop-left-panel h2,
+.shop-left-panel h3 {
+    color: gold;
+}
+
+.shop-right-panel {
+    position: fixed;
+    right: 30px;
+    top: 120px;
+
+    width: 280px;
+    min-height: 420px;
+
+    padding: 20px;
+
+    background: rgba(10, 10, 20, .92);
+
+    border: 3px double gold;
+    border-radius: 12px;
+
+    color: white;
+
+    z-index: 700;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    box-shadow: 0 0 20px black;
+}
+
+.shop-right-panel h2 {
+    color: gold;
+}
+
+.shop-item-image {
+    width: 160px;
+    height: 160px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 15px auto;
+}
+
+/* WEAPON SHOP INTERIOR */
+
+#weapon-shop-modal {
+  position: relative;
+  width: 1100px;
+  height: 800px;
+
+  border: 10px double gold;
+  border-radius: 18px;
+  overflow: hidden;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 120px rgba(0, 0, 0, 0.25);
+}
+
+/* CLOSE BUTTON */
+
+.weapon-shop-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 30;
+
+  width: 42px;
+  height: 42px;
+
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid gold;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.weapon-shop-close:hover {
+  background: rgba(160, 20, 20, 0.8);
+}
+
+/* CLEO MARKER */
+
+#weapon-shop-modal #cleo-marker {
+  position: absolute;
+  top: 30%;
+  left: 28%;
+  z-index: 15;
+  cursor: pointer;
+}
+
+/* Cleo's introductory panel fades away */
+
+.weapon-shop-intro {
+  position: absolute;
+  bottom: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 20px 35px;
+  background: rgba(20, 15, 25, 0.95);
+  border: 2px solid gold;
+  border-radius: 10px;
+
+  color: white;
+  text-align: center;
+  z-index: 20;
+
+  animation: cleoIntroFade 3s ease-in forwards;
+}
+
+.weapon-shop-intro h2 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+@keyframes cleoIntroFade {
+  0%, 45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Leave Shop button remains visible */
+
+.weapon-shop-leave {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 8px 18px;
+  background: rgba(35, 20, 45, 0.9);
+  color: white;
+  border: 1px solid gold;
+  border-radius: 5px;
+
+  cursor: pointer;
+  z-index: 25;
+}
+
+.weapon-shop-leave:hover {
+  background: #59406c;
+}
+
+/* RELIC MARKERS */
+
+#weapon-shop-modal .relic-marker {
+  position: absolute;
+  z-index: 15;
+
+  background: transparent;
+  border: 2px rgb(119, 228, 142) double;
+  border-radius: 50%;
+
+  color: #fbdf9a;
+  font-size: 28px;
+  text-shadow: 0 0 8px black;
+
+  cursor: pointer;
+  animation: relicFloat 2s ease-in-out infinite;
+}
+
+#weapon-shop-modal #amethyst-marker {
+  top: 55%;
+  left: 10%;
+}
+
+#weapon-shop-modal #bracers-marker {
+  top: 52%;
+  right: 10%;
+}
+
+#weapon-shop-modal #helm-marker {
+  top: 22%;
+  right: 7%;
+}
+
+#weapon-shop-modal #twellian-stone {
+  top: 47%;
+  right: 18%;
+}
+
+@keyframes relicFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.relic-button-close {
+    background-color: transparent;
+    color: aliceblue;
+    font-weight: bold;
+    padding: 16px;
+    border: 1px aliceblue solid ;
+    border-radius: 30px;
+    transition: border-color 2s ease, color 1.5s ease;
+}
+
+.relic-button-close:hover {
+    border-color: red;
+    color: red;
+}
+/* RELIC INSPECTION */
+
+.relic-inspection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 340px;
+  padding: 25px;
+
+  background: rgba(20, 15, 10, 0.96);
+  border: 3px double gold;
+  border-radius: 12px;
+
+  color: white;
+  text-align: center;
+  z-index: 40;
+}
+
+.relic-inspection h2 {
+  color: gold;
+}
+
+.relic-inspection-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.relic-buy-button {
+  width: 100%;
+  margin: 12px 0 8px;
+  padding: 10px 18px;
+
+  background: linear-gradient(
+    180deg,
+    #2a2113 0%,
+    #120e09 100%
+  );
+  border: 2px solid gold;
+  border-radius: 8px;
+
+  color: #f5dfa4;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.relic-buy-button:hover:not(:disabled) {
+  border-color: #ffdf7e;
+  box-shadow: 0 0 14px rgba(227, 196, 106, 0.55);
+}
+
+.relic-buy-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.relic-owned {
+  color: #f5dfa4;
+  font-weight: bold;
+}
+
+.relic-purchase-feedback {
+  margin: 6px 0 10px;
+  color: #ffe9a8;
+  font-size: 14px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+
+/* CLEO SHOP MENU */
+
+.weapon-shop-menu {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 340px;
+  padding: 20px;
+
+  background: rgba(15, 10, 20, 0.94);
+  border: 3px double gold;
+  border-radius: 12px;
+
+  color: white;
+  text-align: center;
+  z-index: 20;
+}
+
+.weapon-shop-menu h2 {
+  color: gold;
+  font-family: Georgia, serif;
+}
+
+.weapon-shop-menu button {
+  padding: 10px 20px;
+  background: rgba(90, 50, 110, 0.7);
+  border: 1px solid gold;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.relic-image {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+  border: 2px solid #b89b54;
+  border-radius: 8px;
+}
+
+.npc-marker {
+    position: absolute;
+    font-size: 34px;
+    color: rgba(250, 110, 236, 0.712);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    animation: floatArrow 2s ease-in-out infinite;
+}
+
+@keyframes floatArrow {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+
+        transform: translateY(0px);
+    }
+}
+
+.town-modal {
+    z-index: 400;
+    animation: townEnter .35s ease-out;
+    position: relative;
+}
+
+.town-modal > h1 {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+@keyframes townEnter {
+
+    from {
+
+        opacity:0;
+
+        transform:
+            scale(.96)
+            translateY(25px);
+
+        filter: blur(4px);
+
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        filter: blur(0);
+
+    }
+
+}
+
+.fire-video {
+
+    position: absolute;
+    left: 45px;
+    bottom: 315px;
+    width: 70px;
+    height: 60px;
+    object-fit: cover;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    border-radius: 40px;
+    opacity: .4;
+    filter:
+
+        brightness(1.25)
+
+        saturate(1.4)
+
+        drop-shadow(0 0 15px orange);
+}
+
+.candle{
+    position:absolute;
+    width:13px;
+    height:24px;
+    pointer-events:none;
+    opacity: .7;
+}
+
+.candle1{
+    right:117px;
+    bottom:207px;
+}
+.candle2{
+    left:408px;
+    top:35px;
+}
+.candle3{
+    left:457px;
+    top:55px;
+}
+.candle4{
+      left:293px;
+    top:35px;
+}
+.candle5{
+      left:263px;
+    top:56px;
+}
+.candle6{
+      left:448px;
+    top:67px;
+}
+
+.flame{
+
+    position:absolute;
+
+    left:50%;
+    bottom:12px;
+
+    width:8px;
+    height:14px;
+
+    transform:translateX(-50%);
+
+    border-radius:
+
+        50% 50%
+        50% 50% /
+        70% 70%
+        30% 30%;
+
+    background:
+
+        radial-gradient(
+
+            ellipse at center,
+
+            #ffffff 0%,
+
+            #fff6a0 18%,
+
+            #ffd000 45%,
+
+            orange 75%,
+
+            rgba(255,100,0,.2) 100%
+
+        );
+
+    animation:
+
+        flicker .18s infinite alternate;
+
+}
+
+.glow{
+
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    transform:translateX(-50%);
+
+    width:105px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            rgba(255,210,90,.45),
+
+            rgba(255,180,50,.15),
+
+            transparent 70%
+
+        );
+
+    animation:
+
+        glowPulse 2.3s ease-in-out infinite;
+
+}
+
+@keyframes flicker{
+
+    0%{
+
+        transform:
+            translateX(-50%)
+            rotate(-2deg)
+            scale(.95);
+
+        filter:brightness(.95);
+
+    }
+
+    30%{
+
+        transform:
+            translateX(-50%)
+            rotate(1deg)
+            scale(1);
+
+    }
+
+    60%{
+
+        transform:
+            translateX(-50%)
+            rotate(-1deg)
+            scale(1.05);
+
+        filter:brightness(1.2);
+
+    }
+
+    100%{
+
+        transform:
+            translateX(-50%)
+            rotate(2deg)
+            scale(.92);
+
+        filter:brightness(.9);
+
+    }
+
+}
+
+@keyframes glowPulse{
+
+    0%{
+
+        opacity:.35;
+
+        transform:
+            translateX(-50%)
+            scale(.9);
+
+    }
+
+    50%{
+
+        opacity:.65;
+
+        transform:
+            translateX(-50%)
+            scale(1.1);
+
+    }
+
+    100%{
+
+        opacity:.35;
+
+        transform:
+            translateX(-50%)
+            scale(.9);
+
+    }
+
+}

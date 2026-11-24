@@ -27,7 +27,8 @@ export default function PartySelection() {
 
 
   const {
-    setParty
+    setParty,
+    registerHeroes
   } = useGame()
 
 
@@ -306,6 +307,9 @@ export default function PartySelection() {
             selectedHeroes
           )
 
+          registerHeroes(
+            selectedHeroes
+          )
 
           navigate("/world")
 

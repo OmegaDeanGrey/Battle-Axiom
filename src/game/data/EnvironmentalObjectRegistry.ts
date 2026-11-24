@@ -43,13 +43,13 @@ export const ENVIRONMENTAL_OBJECTS: Readonly<
     imageHeight: 1024,
     fit: "cover",
     region: {
-      left: 0.4,
+      left: 0.16,
       top: 0.14,
       width: 0.13,
       height: 0.19
     },
     name: "Windmill Row",
-    prompt: "Examine the turning sails",
+    prompt: "First Windmill of Twell",
     description:
       "The sails keep turning even when the path below them is still. Flour dust hangs in the warm air, and the whole row seems to breathe with the hill.",
     firstTimeDescription:
@@ -63,7 +63,7 @@ export const ENVIRONMENTAL_OBJECTS: Readonly<
     imageHeight: 1024,
     fit: "cover",
     region: {
-      left: 0.22,
+      left: 0.42,
       top: 0.59,
       width: 0.09,
       height: 0.13

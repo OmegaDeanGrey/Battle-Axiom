@@ -9,18 +9,24 @@ export function resolveEnemyTurn(
   state: BattleState,
   actor: Unit
 ) {
-  const target = state.units.find(
+  const targets = state.units.filter(
     u =>
       u.team !== actor.team &&
       u.hp > 0
   )
 
-  if (!target) {
+  if (!targets.length || !actor.abilities.length) {
     endTurn(state)
     return
   }
 
-  const ability = actor.abilities[0]
+  const target =
+    targets[Math.floor(Math.random() * targets.length)]
+
+  const ability =
+    actor.abilities[
+      Math.floor(Math.random() * actor.abilities.length)
+    ]
 
   resolveAction(
     state,
